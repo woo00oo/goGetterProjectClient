@@ -10,9 +10,20 @@
   "author": "WooDoDok",
   "license": "MIT",
   "dependencies": {
+    "@emotion/babel-plugin": "^11.3.0",
+    "@emotion/react": "^11.4.0",
+    "@emotion/styled": "^11.3.0",
+    "@loadable/component": "^5.15.0",
+    "axios": "^0.21.1",
     "cross-env": "^7.0.3",
+    "gravatar": "^1.8.1",
     "react": "^17.0.1",
-    "react-dom": "^17.0.1"
+    "react-custom-scrollbars": "^4.2.1",
+    "react-dom": "^17.0.1",
+    "react-mentions": "^4.3.0",
+    "react-router": "^5.2.0",
+    "react-router-dom": "^5.2.0",
+    "react-toastify": "^7.0.4"
   },
   "devDependencies": {
     "@babel/core": "^7.13.8",
@@ -20,7 +31,7 @@
     "@babel/preset-react": "^7.12.13",
     "@pmmmwh/react-refresh-webpack-plugin": "^0.4.3",
     "babel-loader": "^8.2.2",
-    "css-loader": "^5.1.0",
+    "css-loader": "^5.2.6",
     "eslint": "^7.20.0",
     "eslint-config-prettier": "^8.1.0",
     "eslint-plugin-prettier": "^3.3.1",
