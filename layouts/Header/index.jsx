@@ -1,7 +1,14 @@
 import React from 'react';
+import { Head, HeaderTop } from '@layouts/Header/styles';
+import Navbar from '@layouts/Header/Navbar';
 
 const Header = () => {
-  return <div>헤더입니다.</div>;
+  return (
+    <Head>
+      <HeaderTop>Header</HeaderTop>
+      <Navbar />
+    </Head>
+  );
 };
 
 export default Header;
