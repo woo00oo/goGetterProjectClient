@@ -10,7 +10,7 @@ const LogIn = () => {
       <LoginDiv>
         <Login>
           <h2>로그인</h2>
-          <Form onSubmit>
+          <Form>
             <span>
               <Link to="/signup">우도독 가입하기</Link>
             </span>
