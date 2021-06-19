@@ -10,7 +10,7 @@
 |백엔드 팀장|변현우||https://github.com/woo00oo||
 |프론트엔 팀장|서영수||https://github.com/seoyoungsoo||
 |백엔드 팀원|박준환||||
-|프론트엔드 팀원|박설아||||
+|프론트엔드 팀원|박설아||https://github.com/developer-sora||
 |백엔드 팀원|김유비||https://github.com/kimyubi||
 
 <br><br><br>
