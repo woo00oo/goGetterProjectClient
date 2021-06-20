@@ -4,11 +4,15 @@
 
 >  책의 인상깊은 구절이나 내용을 나만의 공간에 기록하거나, 사람들과 공유하며 자유롭게 토론하는 커뮤니티 공간을 제공하고자 합니다 
 
+<br><br><br>
+
 ## 👨‍👩‍👦‍👦 팀 소개
 
 Go-Getter (뜻 : 야심이 있는 사람, 열정이 있는 사람! )
 
 <img width="150" alt="팀 로고" src="https://user-images.githubusercontent.com/57715611/122641068-dfa0ce00-d13d-11eb-905a-cdd775a3ccae.png">
+
+<br><br><br>
 
 ## 👩‍👩‍👧‍👦 크루 소개
 
@@ -33,12 +37,19 @@ Go-Getter (뜻 : 야심이 있는 사람, 열정이 있는 사람! )
 
 ![image](https://user-images.githubusercontent.com/57715611/122636334-b4a98080-d123-11eb-82e7-ec9a6786b52e.png)
 
+<br><br>
 
 
 ## 💻 Web Architecture
 
 ![image](https://user-images.githubusercontent.com/57715611/122636295-757b2f80-d123-11eb-8370-f0c13c4f334b.png)
 
+<br><br><br>
+
+## Proto Type
+[🛠 Figma ProtoType](https://www.figma.com/embed?embed_host=share&url=https%3A%2F%2Fwww.figma.com%2Fproto%2FU1DHtmqwSuyG4K7ymPfoU8%2FUntitled%3Fnode-id%3D2%253A3%26scaling%3Dmin-zoom)
+
+<br><br><br>
 
 ## 📚 Wiki
 
