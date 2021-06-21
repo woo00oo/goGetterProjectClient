@@ -4,6 +4,7 @@ export const SignUpWrapper = styled.div`
   margin-top: 40px;
   margin-left: auto;
   margin-right: auto;
+  margin-bottom: 100px;
   padding: 20px;
   width: 500px;
 `;
