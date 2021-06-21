@@ -1,20 +1,29 @@
 import styled from '@emotion/styled';
 
-export const Head = styled.div`
-  height: 174px;
-  width: 100%;
-  display: block;
+export const Head = styled.header`
+  height: 60px;
+  width: 1200px;
+  display: flex;
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
 `;
 
-export const HeaderTop = styled.header`
-  height: 120px;
-  width: 100%;
+export const HeaderTop = styled.div`
+  width: 120px;
   display: flex;
-  --saf-0: rgba(var(--sk_foreground_low, 29, 28, 29), 0.13);
-  box-shadow: 0 1px 0 var(--saf-0);
-  padding: 20px 16px 20px 20px;
-  font-weight: bold;
   align-items: center;
-  text-align: center;
-  justify-content: center;
+  font-weight: bold;
+  padding: 0 20px;
+
+  font-weight: bold;
+
+  & a {
+    text-decoration: none;
+    color: #000;
+  }
+
+  & a:hover {
+    color: #000;
+  }
 `;
