@@ -6,6 +6,7 @@ export const LoginDiv = styled.div`
   position: relative;
   left: 50%;
   transform: translateX(-50%);
+  margin-bottom: 100px;
 `;
 
 export const Form = styled.form`
