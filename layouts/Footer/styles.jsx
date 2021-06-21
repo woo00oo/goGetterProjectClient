@@ -2,10 +2,19 @@ import React from 'react';
 import styled from '@emotion/styled';
 
 export const FooterWrapper = styled.footer`
-  margin: 100px auto 0;
-  padding: 50 13%;
+  width: 100%;
   color: #4e4e4e;
-  background-color: F7F7F5;
+  position: relative;
+  background-color: #f7f7f5;
+  height: 350px;
+`;
+
+export const FooterFixed = styled.div`
+  padding-top: 20px;
+  width: 1200px;
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
 `;
 
 export const FooterHeadWrapper = styled.div`
