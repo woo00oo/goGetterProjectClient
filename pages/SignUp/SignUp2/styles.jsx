@@ -9,6 +9,12 @@ export const SignUpWrapper = styled.div`
   width: 500px;
 `;
 
+export const SignUpDiv = styled.div`
+  height: auto;
+  min-height: 100%;
+  padding-bottom: 300px;
+`;
+
 export const SignUpTitle = styled.div`
   font-size: 30px;
   font-weight: bold;

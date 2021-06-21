@@ -14,6 +14,7 @@ import {
   AuthButton,
   Email,
   SignUpTitle,
+  SignUpDiv,
 } from '@pages/SignUp/SignUp2/styles';
 import Footer from '@layouts/Footer';
 import AuthModal from '@components/Modal/Auth';
@@ -23,10 +24,10 @@ const SignUp2 = () => {
   const [authModalOpen, setAuthModalOpen] = useState(false);
   const [serviceModalOpen, setServiceModalOpen] = useState(false);
   return (
-    <>
+    <div id="container" style={{ height: '100%' }}>
       <AuthModal authModalOpen={authModalOpen} setAuthModalOpen={setAuthModalOpen} />
       <ServiceModal serviceModalOpen={serviceModalOpen} setServiceModalOpen={setServiceModalOpen} />
-      <div id="container">
+      <SignUpDiv>
         <Header />
         <SignUpWrapper>
           <SignUpTitle>회원가입</SignUpTitle>
@@ -116,9 +117,9 @@ const SignUp2 = () => {
             <SignUpButton>회원가입</SignUpButton>
           </SignForm>
         </SignUpWrapper>
-        <Footer />
-      </div>
-    </>
+      </SignUpDiv>
+      <Footer />
+    </div>
   );
 };
 

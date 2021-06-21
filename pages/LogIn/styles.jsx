@@ -2,11 +2,16 @@ import styled from '@emotion/styled';
 
 export const LoginDiv = styled.div`
   width: 1200px;
-  height: 100vh - 180px;
   position: relative;
   left: 50%;
   transform: translateX(-50%);
   margin-bottom: 100px;
+`;
+
+export const AllDiv = styled.div`
+  height: auto;
+  min-height: 100%;
+  padding-bottom: 300px;
 `;
 
 export const Form = styled.form`
