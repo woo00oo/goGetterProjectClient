@@ -31,9 +31,9 @@ const Footer = () => {
           </FooterLink>
         </FooterLinks>
         <SocialLinks>
-          <i class="fab fa-facebook-square fa-2x" style={{ marginRight: '20px' }}></i>
-          <i class="fab fa-instagram fa-2x" style={{ marginRight: '20px' }}></i>
-          <i class="fab fa-twitter fa-2x" style={{ marginRight: '20px' }}></i>
+          <i class="fab fa-facebook-square fa-2x"></i>
+          <i class="fab fa-instagram fa-2x"></i>
+          <i class="fab fa-twitter fa-2x"></i>
           <i class="fab fa-youtube fa-2x"></i>
         </SocialLinks>
       </FooterHeadWrapper>
