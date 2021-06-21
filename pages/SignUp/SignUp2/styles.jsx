@@ -8,7 +8,7 @@ export const SignUpWrapper = styled.div`
   width: 500px;
 `;
 
-export const SignUpTitle = styled.form`
+export const SignUpTitle = styled.div`
   font-size: 30px;
   font-weight: bold;
 `;
@@ -82,8 +82,12 @@ export const FormCheck = styled.div`
 export const CheckText = styled.span`
   font-size: 10px;
 
-  & span {
-    text-decoration: underline;
+  & a {
+    color: #1778b5;
+    :hover {
+      color: red;
+      cursor: pointer;
+    }
   }
 `;
 
