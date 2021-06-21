@@ -2,6 +2,7 @@ import React from 'react';
 import Header from '@layouts/Header';
 import { LoginDiv, GoLogIn, Form, Login, Input, Button, Search, Social, FaceBook, Google } from '@pages/SignUp/styles';
 import { Link, Redirect } from 'react-router-dom';
+import Footer from '@layouts/Footer';
 
 const SignUp = () => {
   return (
@@ -29,6 +30,7 @@ const SignUp = () => {
           </GoLogIn>
         </Login>
       </LoginDiv>
+      <Footer />
     </div>
   );
 };
