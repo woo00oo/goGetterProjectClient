@@ -1,7 +1,7 @@
 import React from 'react';
-import Header from '@layouts/Header';
 import { LoginDiv, Form, Login, Input, Button, Search, Social, FaceBook, Google } from '@pages/LogIn/styles';
 import { Link } from 'react-router-dom';
+import Header from '@layouts/Header';
 import Footer from '@layouts/Footer';
 
 const LogIn = () => {
