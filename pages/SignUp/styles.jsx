@@ -2,7 +2,7 @@ import styled from '@emotion/styled';
 
 export const LoginDiv = styled.div`
   width: 1200px;
-  height: 100%;
+  height: 100vh - 180px;
   position: relative;
   left: 50%;
   transform: translateX(-50%);

@@ -16,8 +16,8 @@ import {
   SignUpTitle,
 } from '@pages/SignUp/SignUp2/styles';
 import Footer from '@layouts/Footer';
-import AuthModal from '@components/Modal/AuthModal';
-import ServiceModal from '@components/Modal/ServiceModal';
+import AuthModal from '@components/Modal/Auth';
+import ServiceModal from '@components/Modal/Service';
 
 const SignUp2 = () => {
   const [authModalOpen, setAuthModalOpen] = useState(false);
@@ -116,7 +116,7 @@ const SignUp2 = () => {
             <SignUpButton>회원가입</SignUpButton>
           </SignForm>
         </SignUpWrapper>
-        <Footer></Footer>
+        <Footer />
       </div>
     </>
   );
