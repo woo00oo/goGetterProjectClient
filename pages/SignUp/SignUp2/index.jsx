@@ -16,8 +16,8 @@ import {
   SignUpTitle,
 } from '@pages/SignUp/SignUp2/styles';
 import Footer from '@layouts/Footer';
-import AuthModal from '@pages/Modal/AuthModal';
-import ServiceModal from '@pages/Modal/ServiceModal';
+import AuthModal from '@components/Modal/AuthModal';
+import ServiceModal from '@components/Modal/ServiceModal';
 
 const SignUp2 = () => {
   const [authModalOpen, setAuthModalOpen] = useState(false);
