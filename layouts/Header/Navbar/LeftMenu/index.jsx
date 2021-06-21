@@ -11,7 +11,7 @@ const LeftMenu = () => {
             <Link to="/">독서 공유</Link>
           </li>
           <li>
-            <Link to="/">토론 게시판</Link>
+            <Link to="/discussion">토론 게시판</Link>
           </li>
           <li>
             <Link to="/">도서관 찾기</Link>
