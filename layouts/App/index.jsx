@@ -6,6 +6,7 @@ const LogIn = loadable(() => import('@pages/LogIn'));
 const SignUp = loadable(() => import('@pages/SignUp'));
 const SignUp2 = loadable(() => import('@pages/SignUp/SignUp2'));
 const Discussion = loadable(() => import('@pages/Discussion'));
+const MyPageProfile = loadable(() => import('@pages/MyPage/Profile'));
 
 const App = () => {
   return (
@@ -15,6 +16,7 @@ const App = () => {
       <Route path="/discussion" component={Discussion} />
       <Route path="/signup" component={SignUp} />
       <Route path="/signup2" component={SignUp2} />
+      <Route path="/mypage/profile" component={MyPageProfile} />
     </Switch>
   );
 };
