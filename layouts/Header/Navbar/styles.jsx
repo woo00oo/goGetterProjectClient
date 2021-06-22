@@ -29,11 +29,18 @@ export const Inner = styled.div`
   & ul > li > a {
     text-decoration: none;
     text-align: center;
-    color: #939597;
     font-weight: bold;
+    color: #939597;
   }
 
   & ul > li > a:hover {
-    color: rgba(147, 149, 151, 0.8);
+    color: #0f4c81;
+  }
+`;
+
+export const LinkClicked = styled.div`
+  color: ${(props) => (props.isActive ? '#0f4c81' : '#939597')};
+  :hover {
+    color: #0f4c81;
   }
 `;

@@ -1,20 +1,19 @@
 import styled from '@emotion/styled';
 
 export const TabDiv = styled.div`
-  width: 250px;
-  background-color: #0f4c81;
+  margin-top: 70px;
+  width: 200px;
+  background-color: #fffff;
 
   & h2 {
-    font-weight: normal;
+    padding: 50px 30px;
     display: flex;
     align-items: center;
     justify-content: center;
-    color: #fff;
-    font-size: 24px;
-    margin-bottom: 30px;
+    color: #000;
+    margin-bottom: 20px;
     margin: 0;
-    height: 80px;
-    border-bottom: 1px solid #ced4da;
+    height: 50px;
   }
 
   & ul {
@@ -26,24 +25,27 @@ export const TabDiv = styled.div`
   }
 
   & li {
-    height: 80px;
-    width: 250px;
+    height: 50px;
+    width: 200px;
     display: flex;
     align-items: center;
-    justify-content: center;
+    padding-left: 40px;
+    margin-top: 20px;
   }
 
   & a {
     text-decoration: none;
-    color: #fff;
-    font-size: 24px;
+    color: #000;
+    font-size: 18px;
   }
 
   & li:hover {
     background-color: #778fa8;
+    border-top-right-radius: 15px;
+    border-bottom-right-radius: 15px;
+    color: white;
   }
 
   & li:last-child {
-    border-bottom: 1px solid #ced4da;
   }
 `;
