@@ -9,6 +9,12 @@ export const LoginDiv = styled.div`
   margin-bottom: 100px;
 `;
 
+export const SignUpDiv = styled.div`
+  height: auto;
+  min-height: 100%;
+  padding-bottom: 300px;
+`;
+
 export const Form = styled.form`
   width: 300px;
   position: relative;

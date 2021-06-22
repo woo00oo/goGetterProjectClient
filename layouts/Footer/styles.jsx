@@ -4,9 +4,10 @@ import styled from '@emotion/styled';
 export const FooterWrapper = styled.footer`
   width: 100%;
   color: #4e4e4e;
-  position: relative;
   background-color: #f7f7f5;
-  height: 350px;
+  height: 300px;
+  position: relative;
+  transform: translateY(-100%);
 `;
 
 export const FooterFixed = styled.div`

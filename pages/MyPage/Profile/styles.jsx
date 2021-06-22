@@ -8,6 +8,12 @@ export const AllDiv = styled.div`
   display: flex;
 `;
 
+export const MyPageDiv = styled.div`
+  height: auto;
+  min-height: 100%;
+  padding-bottom: 300px;
+`;
+
 export const ContentDiv = styled.div`
   width: 950px;
   padding-top: 30px;

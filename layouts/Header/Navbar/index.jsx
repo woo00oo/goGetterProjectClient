@@ -1,14 +1,28 @@
 import React from 'react';
 import { Fixed, Inner } from '@layouts/Header/Navbar/styles';
-import LeftMenu from '@layouts/Header/Navbar/LeftMenu';
-import RightMenu from '@layouts/Header/Navbar/RightMenu';
+import { Link } from 'react-router-dom';
 
 const Navbar = () => {
   return (
     <Fixed>
       <Inner>
-        <LeftMenu />
-        <RightMenu />
+        <ul>
+          <li>
+            <Link to="/">독서 기록</Link>
+          </li>
+          <li>
+            <Link to="/">독서 공유</Link>
+          </li>
+          <li>
+            <Link to="/discussion">독서 토론</Link>
+          </li>
+          <li>
+            <Link to="/">이벤트</Link>
+          </li>
+          <li>
+            <Link to="/login">로그인</Link>
+          </li>
+        </ul>
       </Inner>
     </Fixed>
   );
