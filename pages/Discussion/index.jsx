@@ -31,16 +31,22 @@ const Discussion = () => {
         <DCTable>
           <DCTitle>
             <tr>
-              <th>글번호</th>
-              <th>제목</th>
+              <th className="textNo">글번호</th>
+              <th className="title">제목</th>
               <th>작성자</th>
               <th>작성날짜</th>
             </tr>
           </DCTitle>
           <DCMain>
+            <tr className="notice">
+              <td>공지</td>
+              <td className="title">토론 게시판 이용규칙</td>
+              <td>우도독</td>
+              <td>20-06-21</td>
+            </tr>
             <tr>
               <td>1</td>
-              <td>나의 라임 오렌지나무</td>
+              <td className="title">나의 라임 오렌지나무</td>
               <td>나독자</td>
               <td>20-06-21</td>
             </tr>
