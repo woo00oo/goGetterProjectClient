@@ -40,4 +40,7 @@ export const Inner = styled.div`
 
 export const LinkClicked = styled.div`
   color: ${(props) => (props.isActive ? '#0f4c81' : '#939597')};
+  :hover {
+    color: #0f4c81;
+  }
 `;
