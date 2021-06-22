@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useCallback } from 'react';
 import Header from '@layouts/Header';
 import {
   SignUpWrapper,
@@ -21,11 +21,30 @@ import AuthModal from '@components/Modal/Auth';
 import ServiceModal from '@components/Modal/Service';
 
 const SignUp2 = () => {
+  const [email, setEmail] = useState('');
+
   const [authModalOpen, setAuthModalOpen] = useState(false);
   const [serviceModalOpen, setServiceModalOpen] = useState(false);
+
+  const onChangeEmail = useCallback(
+    (e) => {
+      e.preventDefault();
+      setEmail(e.target.value);
+    },
+    [email, setEmail],
+  );
+
+  const onClickAuthButton = useCallback(
+    (e) => {
+      e.preventDefault();
+      setAuthModalOpen(true);
+    },
+    [email],
+  );
+
   return (
     <div id="container" style={{ height: '100%' }}>
-      <AuthModal authModalOpen={authModalOpen} setAuthModalOpen={setAuthModalOpen} />
+      <AuthModal authModalOpen={authModalOpen} setAuthModalOpen={setAuthModalOpen} email={email} />
       <ServiceModal serviceModalOpen={serviceModalOpen} setServiceModalOpen={setServiceModalOpen} />
       <SignUpDiv>
         <Header />
@@ -38,15 +57,13 @@ const SignUp2 = () => {
                   이메일<span> *</span>
                 </Label>
                 <br></br>
-                <EmailInput placeholder="이메일을 입력해주세요." type="email"></EmailInput>
-                <AuthButton
-                  onClick={(e) => {
-                    setAuthModalOpen(true);
-                    e.preventDefault();
-                  }}
-                >
-                  인증받기
-                </AuthButton>
+                <EmailInput
+                  onChange={onChangeEmail}
+                  value={email}
+                  placeholder="이메일을 입력해주세요."
+                  type="email"
+                ></EmailInput>
+                <AuthButton onClick={onClickAuthButton}>인증받기</AuthButton>
               </Email>
             </FormGroup>
             <FormGroup>
