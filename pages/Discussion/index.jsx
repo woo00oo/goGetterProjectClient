@@ -12,10 +12,11 @@ import {
   DCContents,
   DCButton,
 } from '@pages/Discussion/styles';
+import { Link } from 'react-router-dom';
 
 const Discussion = () => {
   return (
-    <>
+    <div id="discussion" style={{ height: '100%' }}>
       <Header></Header>
       <Container>
         <DCHeader>토론 게시판</DCHeader>
@@ -54,8 +55,8 @@ const Discussion = () => {
         </DCTable>
         <DCButton>글쓰기</DCButton>
       </Container>
-      <Footer></Footer>
-    </>
+      <Footer />
+    </div>
   );
 };
 
