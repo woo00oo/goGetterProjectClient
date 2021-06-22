@@ -2,7 +2,7 @@ import styled from '@emotion/styled';
 
 export const Container = styled.div`
   width: 1200px;
-  height: 100vh - 180px;
+  height: 100vh;
   position: relative;
   left: 50%;
   transform: translateX(-50%);
@@ -58,28 +58,50 @@ export const DCTitle = styled.thead`
     font-size: 15px;
     color: #0f4c81;
   }
+
+  & th.textNo {
+    width: 150px;
+  }
+
+  & th.title {
+    width: 850px;
+  }
 `;
 
 export const DCMain = styled.tbody`
-  text-align: center;
   height: 60px;
+  text-align: center;
+
+  & tr {
+    height: 60px;
+  }
+  & tr.notice {
+    font-weight: bold;
+  }
+
   & td {
     border-bottom: 1px solid #939597;
   }
 
-  :hover {
-    background-color: aliceblue;
+  & td.title {
+    text-align: left;
+    padding-left: 40px;
   }
 `;
 
 export const DCButton = styled.button`
   border: 0px;
-  border-radius: 15px;
+  border-radius: 5px;
   background-color: #0f4c81;
   color: white;
-  width: 80px;
+  width: 120px;
   height: 45px;
   font-weight: bold;
   float: right;
   margin-top: 15px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
+  :hover {
+    cursor: pointer;
+    background-color: rgba(15, 76, 129, 0.8);
+  }
 `;
