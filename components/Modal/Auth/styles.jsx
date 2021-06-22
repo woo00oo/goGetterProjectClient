@@ -19,9 +19,8 @@ export const ModalBtn = styled.button`
   width: 225px;
   height: 39px;
   color: white;
-  margin-left: 7px;
   cursor: pointer;
-  margin-top: 35px;
+  margin-top: 10px;
 
   &:hover {
     background-color: rgba(144, 0, 32, 0.8);
@@ -42,6 +41,7 @@ export const MainText = styled.div`
 `;
 
 export const SubText = styled.div`
+  padding-top: 5px;
   font-size: 12px;
   color: #c4c4c4;
 `;
@@ -59,4 +59,21 @@ export const Container = styled.div`
   margin-right: -50%;
   transform: translate(-50%, -50%);
   z-index: 99;
+`;
+
+export const TextInput = styled.input`
+  border: 1px solid #ced4da;
+  border-radius: 3px;
+  width: 225px;
+  margin-top: 8px;
+  padding: 12px;
+  height: 38px;
+  padding-top: 11px;
+  padding-bottom: 13px;
+  line-height: 1.33333333;
+  font-size: 14px;
+
+  &:focus {
+    outline: none;
+  }
 `;
