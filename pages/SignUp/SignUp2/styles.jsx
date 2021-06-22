@@ -98,6 +98,13 @@ export const CheckText = styled.span`
   }
 `;
 
+export const Error = styled.div`
+  color: #e01e5a;
+  margin: 8px 0 16px;
+  font-weight: bold;
+  font-size: 12px;
+`;
+
 export const AuthButton = styled.button`
   border-radius: 3px;
   border: none;
