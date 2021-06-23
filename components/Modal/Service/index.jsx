@@ -10,7 +10,9 @@ import {
   Container,
 } from '@components/Modal/Service/styles';
 
-const Service = ({ serviceModalOpen, setServiceModalOpen }) => {
+const Service = (props) => {
+  const check = props.check;
+
   const text = [
     {
       mainText: '이용약관, 개인정보 수집 및 이용에 동의합니다.(필수)',
@@ -103,31 +105,52 @@ const Service = ({ serviceModalOpen, setServiceModalOpen }) => {
     },
     {
       mainText: '마케팅 동의',
-      subText: `제 1조 어쩌구저쩌구`,
+      subText: `마케팅 동의 내용`,
     },
   ];
 
   return (
     <>
-      <Modal signUpModal={serviceModalOpen} />
-      <Container signUpModal={serviceModalOpen}>
+      <Modal signUpModal={props.serviceModalOpen} />
+      <Container signUpModal={props.serviceModalOpen}>
+        {/* {check === 0 && (
         <ModalWrapper>
           <MainText>{text[0].mainText}</MainText>
-          <SubText>{text[0].subText}</SubText>
+          <SubText value={text[0].subText}></SubText>
           <ModalBtn>
-            <OKBtn
-              onClick={() => {
-                setServiceModalOpen(false);
-              }}
-            >
-              동의
-            </OKBtn>
             <NoBtn
               onClick={() => {
-                setServiceModalOpen(false);
+                props.setServiceModalOpen(false);
               }}
             >
-              비동의
+              닫기
+            </NoBtn>
+          </ModalBtn>
+        </ModalWrapper>)}
+        {check === 1 && (
+        <ModalWrapper>
+          <MainText>{text[1].mainText}</MainText>
+          <SubText value={text[1].subText}></SubText>
+          <ModalBtn>
+            <NoBtn
+              onClick={() => {
+                props.setServiceModalOpen(false);
+              }}
+            >
+              닫기
+            </NoBtn>
+          </ModalBtn>
+        </ModalWrapper>)} */}
+        <ModalWrapper>
+          <MainText>{text[check].mainText}</MainText>
+          <SubText value={text[check].subText}></SubText>
+          <ModalBtn>
+            <NoBtn
+              onClick={() => {
+                props.setServiceModalOpen(false);
+              }}
+            >
+              닫기
             </NoBtn>
           </ModalBtn>
         </ModalWrapper>
