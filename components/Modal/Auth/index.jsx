@@ -14,7 +14,13 @@ const Auth = ({ authModalOpen, setAuthModalOpen, email }) => {
     (e) => {
       setSendMail(!sendMail);
 
-      // axios.post('http://localhost:')
+      axios.get(`http://localhost:8080/email-confirm?email=${email}`)
+        .then(res => {
+          console.log(res);
+        })
+        .catch(err => {
+          console.dir(err);
+        })
     },
     [email],
   );
