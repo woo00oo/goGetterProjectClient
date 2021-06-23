@@ -7,6 +7,7 @@ const SignUp = loadable(() => import('@pages/SignUp'));
 const SignUp2 = loadable(() => import('@pages/SignUp/SignUp2'));
 const Discussion = loadable(() => import('@pages/Discussion'));
 const DCContent = loadable(() => import('@pages/Discussion/DCContent'));
+const DCWrite = loadable(() => import('@pages/Discussion/DCWrite'));
 const MyPageProfile = loadable(() => import('@pages/MyPage/Profile'));
 
 const App = () => {
@@ -14,6 +15,7 @@ const App = () => {
     <Switch>
       <Redirect exact path="/" to="/login" />
       <Route path="/login" component={LogIn} />
+      <Route path="/discussion/write" component={DCWrite} />
       <Route path="/discussion/content" component={DCContent} />
       <Route path="/discussion" component={Discussion} />
       <Route path="/signup" component={SignUp} />

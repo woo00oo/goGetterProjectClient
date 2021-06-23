@@ -53,7 +53,9 @@ const Discussion = () => {
             </tr>
           </DCMain>
         </DCTable>
-        <DCButton>글쓰기</DCButton>
+        <Link to="/discussion/write">
+          <DCButton>글쓰기</DCButton>
+        </Link>
       </Container>
       <Footer />
     </div>
