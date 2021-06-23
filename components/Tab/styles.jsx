@@ -1,18 +1,18 @@
 import styled from '@emotion/styled';
 
 export const TabDiv = styled.div`
-  margin-top: 70px;
+  margin-top: 40px;
   width: 200px;
-  background-color: #fffff;
+  background-color: #fff;
 
   & h2 {
-    padding: 50px 30px;
+    padding: 20px 30px;
     display: flex;
     align-items: center;
     justify-content: center;
     color: #000;
-    margin-bottom: 20px;
     margin: 0;
+    margin-bottom: 20px;
     height: 50px;
   }
 
@@ -25,12 +25,11 @@ export const TabDiv = styled.div`
   }
 
   & li {
-    height: 50px;
+    height: 40px;
     width: 200px;
     display: flex;
     align-items: center;
     padding-left: 40px;
-    margin-top: 20px;
   }
 
   & a {

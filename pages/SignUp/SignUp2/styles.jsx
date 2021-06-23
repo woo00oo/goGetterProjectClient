@@ -87,7 +87,8 @@ export const FormCheck = styled.div`
 `;
 
 export const CheckText = styled.span`
-  font-size: 10px;
+  font-size: 12px;
+  padding-left: 5px;
 
   & a {
     color: #1778b5;
@@ -96,6 +97,13 @@ export const CheckText = styled.span`
       cursor: pointer;
     }
   }
+`;
+
+export const Error = styled.div`
+  color: #e01e5a;
+  margin: 8px 0 16px;
+  font-weight: bold;
+  font-size: 12px;
 `;
 
 export const AuthButton = styled.button`

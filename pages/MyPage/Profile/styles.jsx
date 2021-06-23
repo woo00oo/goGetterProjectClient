@@ -6,6 +6,7 @@ export const AllDiv = styled.div`
   left: 50%;
   transform: translateX(-50%);
   display: flex;
+  margin-bottom: 100px;
 `;
 
 export const MyPageDiv = styled.div`
@@ -99,4 +100,22 @@ export const Input = styled.input`
 export const SmallText = styled.div`
   font-size: 13px;
   color: #939597;
+`;
+
+export const ModifiedBtn = styled.button`
+  font-size: 16px;
+  color: white;
+  background-color: #0f4c81;
+  border: 0px;
+  border-radius: 3px;
+  width: 460px;
+  height: 47px;
+  margin-top: 25px;
+  cursor: pointer;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
+
+  &:hover {
+    background-color: rgba(15, 76, 129, 0.8);
+    border: none;
+  }
 `;

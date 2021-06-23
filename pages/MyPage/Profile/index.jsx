@@ -15,6 +15,7 @@ import {
   FormGroup,
   ProfileForm,
   MyPageDiv,
+  ModifiedBtn
 } from '@pages/MyPage/Profile/styles';
 
 const MyPageProfile = () => {
@@ -55,6 +56,7 @@ const MyPageProfile = () => {
                   <br></br>
                   <Input placeholder="비밀번호를 다시 입력해주세요." type="password"></Input>
                 </FormGroup>
+                <ModifiedBtn>수정하기</ModifiedBtn>
               </ProfileForm>
             </ProfileDiv>
           </ContentDiv>

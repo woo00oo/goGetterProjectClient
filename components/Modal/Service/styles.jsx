@@ -73,6 +73,11 @@ export const SubText = styled.textarea`
   width: 460px;
   height: 200px;
   border: 1px solid #ced4da;
+  resize: none;
+
+  &:focus {
+    outline: none;
+  }
 `;
 
 export const Container = styled.div`

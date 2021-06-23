@@ -10,11 +10,20 @@ const Auth = ({ authModalOpen, setAuthModalOpen, email }) => {
     setSendMail(false);
   }, []);
 
-  const onChangeSendMail = useCallback(() => {
-    setSendMail(true);
+  const onChangeSendMail = useCallback(
+    (e) => {
+      setSendMail(!sendMail);
 
-    // axios.post('http://localhost:')
-  }, [email]);
+      // axios.post('http://localhost:')
+    },
+    [email],
+  );
+
+  const onAuthConfirm = useCallback((e) => {
+    e.preventDefault();
+    setAuthModalOpen(false);
+    setSendMail(false);
+  }, []);
 
   return (
     <>
@@ -34,7 +43,7 @@ const Auth = ({ authModalOpen, setAuthModalOpen, email }) => {
               <MainText>이메일을 확인해주세요.</MainText>
               <SubText>*수신함에서 인증메일을 찾을 수 없을 경우 스팸함을 조회하세요.</SubText>
               <TextInput placeholder="인증번호를 입력해주세요." type="text"></TextInput>
-              <ModalBtn onClick={onChangeSendMail}>인증 번호 확인</ModalBtn>
+              <ModalBtn onClick={onAuthConfirm}>인증 번호 확인</ModalBtn>
             </ModalWrapper>
           </form>
         )}
