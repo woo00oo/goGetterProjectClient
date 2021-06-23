@@ -1,9 +1,11 @@
 import React, { useState, useCallback } from 'react';
 import { Modal, ModalBtn, ModalWrapper, MainText, SubText, Container, TextInput } from '@components/Modal/Auth/styles';
 import axios from 'axios';
+import { toast } from 'react-toastify';
 
 const Auth = ({ authModalOpen, setAuthModalOpen, email }) => {
   const [sendMail, setSendMail] = useState(false);
+  const [authNumber, setAuthNumber] = useState(null);
 
   const onChangeModal = useCallback(() => {
     setAuthModalOpen(false);
@@ -25,11 +27,30 @@ const Auth = ({ authModalOpen, setAuthModalOpen, email }) => {
     [email],
   );
 
+  const onChangeAuthNumber = useCallback(
+    (e) => {
+      const { value } = e.target;
+      const onlyNum = value.replace(/[^0-9]/g, '');
+
+      setAuthNumber(onlyNum);
+    },
+    [],
+  )
+
   const onAuthConfirm = useCallback((e) => {
     e.preventDefault();
-    setAuthModalOpen(false);
-    setSendMail(false);
-  }, []);
+    console.log(authNumber);
+
+    axios.get(`http://localhost:8080/issuance-confirm?number=${authNumber}`)
+      .then(res => {
+        console.log(res);
+      })
+      .catch(err => {
+        console.dir(err);
+      })
+    // setAuthModalOpen(false);
+    // setSendMail(false);
+  }, [authNumber]);
 
   return (
     <>
@@ -48,7 +69,14 @@ const Auth = ({ authModalOpen, setAuthModalOpen, email }) => {
             <ModalWrapper>
               <MainText>이메일을 확인해주세요.</MainText>
               <SubText>*수신함에서 인증메일을 찾을 수 없을 경우 스팸함을 조회하세요.</SubText>
-              <TextInput placeholder="인증번호를 입력해주세요." type="text"></TextInput>
+              <TextInput 
+                name="text" 
+                id="text" 
+                type="text" 
+                placeholder="인증번호를 입력해주세요." 
+                onChange={onChangeAuthNumber} 
+                value={authNumber}>
+              </TextInput>
               <ModalBtn onClick={onAuthConfirm}>인증 번호 확인</ModalBtn>
             </ModalWrapper>
           </form>
