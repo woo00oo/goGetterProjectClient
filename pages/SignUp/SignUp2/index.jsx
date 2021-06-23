@@ -29,6 +29,7 @@ const SignUp2 = () => {
   const [phoneNumber, setPhoneNumber] = useState('');
   const [nickName, setNickName] = useState('');
   const [mismatchError, setMismatchError] = useState(false);
+  const [check, setCheck] = useState(0);
 
   const [authModalOpen, setAuthModalOpen] = useState(false);
   const [serviceModalOpen, setServiceModalOpen] = useState(false);
@@ -68,12 +69,16 @@ const SignUp2 = () => {
   const onClickServiceButton = useCallback((e) => {
     e.preventDefault();
     setServiceModalOpen(true);
+    
+    const checkId = e.target.id;
+    if (checkId === 'check1') setCheck(0);
+    else setCheck(1);
   }, []);
 
   return (
     <div id="container" style={{ height: '100%' }}>
       <AuthModal authModalOpen={authModalOpen} setAuthModalOpen={setAuthModalOpen} email={email} />
-      <ServiceModal serviceModalOpen={serviceModalOpen} setServiceModalOpen={setServiceModalOpen} />
+      <ServiceModal serviceModalOpen={serviceModalOpen} setServiceModalOpen={setServiceModalOpen} check={check} />
       <SignUpDiv>
         <Header />
         <SignUpWrapper>
@@ -170,14 +175,14 @@ const SignUp2 = () => {
             </FormGroup>
             <FormCheck>
               <div>
-                <input type="checkbox"></input>
+                <input type="checkbox" />
                 <CheckText>
-                  우도독의 <a onClick={onClickServiceButton}>이용약관 및 개인정보 처리 방침</a>
+                  우도독의 <a id="check1" onClick={onClickServiceButton}>이용약관 및 개인정보 처리 방침</a>
                   (필수)에 동의합니다.<br></br>
                 </CheckText>
-                <input type="checkbox"></input>
+                <input type="checkbox" />
                 <CheckText>
-                  <a onClick={onClickServiceButton}>마케팅 정보 수신</a>
+                  <a id="check2" onClick={onClickServiceButton}>마케팅 정보 수신</a>
                   (선택)에 동의합니다.
                 </CheckText>
               </div>
