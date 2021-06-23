@@ -87,7 +87,8 @@ export const FormCheck = styled.div`
 `;
 
 export const CheckText = styled.span`
-  font-size: 10px;
+  font-size: 12px;
+  padding-left: 5px;
 
   & a {
     color: #1778b5;
