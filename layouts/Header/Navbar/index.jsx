@@ -10,7 +10,9 @@ const Navbar = () => {
       <Inner>
         <ul>
           <li>
-            <Link to="/">독서 기록</Link>
+            <Link to="/mybookrecord">
+              <LinkClicked isActive={pathname.includes('/mybookrecord')}>독서 기록</LinkClicked>
+            </Link>
           </li>
           <li>
             <Link to="/">독서 공유</Link>
