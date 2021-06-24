@@ -5,7 +5,7 @@ import { toast } from 'react-toastify';
 
 const Auth = ({ authModalOpen, setAuthModalOpen, email }) => {
   const [sendMail, setSendMail] = useState(false);
-  const [authNumber, setAuthNumber] = useState(null);
+  const [authNumber, setAuthNumber] = useState('');
 
   const onChangeModal = useCallback(() => {
     setAuthModalOpen(false);
@@ -16,41 +16,47 @@ const Auth = ({ authModalOpen, setAuthModalOpen, email }) => {
     (e) => {
       setSendMail(!sendMail);
 
-      axios.get(`http://localhost:8080/email-confirm?email=${email}`)
-        .then(res => {
+      axios
+        .get(`/api/email-confirm?email=${email}`, {
+          withCredentials: true,
+        })
+        .then((res) => {
           console.log(res);
         })
-        .catch(err => {
+        .catch((err) => {
           console.dir(err);
-        })
+        });
     },
     [email],
   );
 
-  const onChangeAuthNumber = useCallback(
+  const onChangeAuthNumber = useCallback((e) => {
+    const { value } = e.target;
+    const onlyNum = value.replace(/[^0-9]/g, '');
+
+    setAuthNumber(onlyNum);
+  }, []);
+
+  const onAuthConfirm = useCallback(
     (e) => {
-      const { value } = e.target;
-      const onlyNum = value.replace(/[^0-9]/g, '');
+      e.preventDefault();
+      console.log(authNumber);
 
-      setAuthNumber(onlyNum);
+      axios
+        .get(`/api/issuance-confirm?number=${authNumber}`, {
+          withCredentials: true,
+        })
+        .then((res) => {
+          console.log(res);
+        })
+        .catch((err) => {
+          console.dir(err);
+        });
+      // setAuthModalOpen(false);
+      // setSendMail(false);
     },
-    [],
-  )
-
-  const onAuthConfirm = useCallback((e) => {
-    e.preventDefault();
-    console.log(authNumber);
-
-    axios.get(`http://localhost:8080/issuance-confirm?number=${authNumber}`)
-      .then(res => {
-        console.log(res);
-      })
-      .catch(err => {
-        console.dir(err);
-      })
-    // setAuthModalOpen(false);
-    // setSendMail(false);
-  }, [authNumber]);
+    [authNumber],
+  );
 
   return (
     <>
@@ -69,14 +75,14 @@ const Auth = ({ authModalOpen, setAuthModalOpen, email }) => {
             <ModalWrapper>
               <MainText>이메일을 확인해주세요.</MainText>
               <SubText>*수신함에서 인증메일을 찾을 수 없을 경우 스팸함을 조회하세요.</SubText>
-              <TextInput 
-                name="text" 
-                id="text" 
-                type="text" 
-                placeholder="인증번호를 입력해주세요." 
-                onChange={onChangeAuthNumber} 
-                value={authNumber}>
-              </TextInput>
+              <TextInput
+                name="text"
+                id="text"
+                type="text"
+                placeholder="인증번호를 입력해주세요."
+                onChange={onChangeAuthNumber}
+                value={authNumber}
+              ></TextInput>
               <ModalBtn onClick={onAuthConfirm}>인증 번호 확인</ModalBtn>
             </ModalWrapper>
           </form>
