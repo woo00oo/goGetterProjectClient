@@ -45,6 +45,7 @@ export const Input = styled.input`
   padding-bottom: 13px;
   line-height: 1.33333333;
   font-size: 14px;
+  resize: none;
 
   &:focus {
     --saf-0: rgba(var(--sk_highlight, 18, 100, 163), 1);

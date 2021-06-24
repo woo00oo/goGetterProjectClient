@@ -62,6 +62,12 @@ const config = {
     historyApiFallback: true,
     port: 3000,
     publicPath: '/dist/',
+    proxy: {
+      '/api/': {
+        target: 'http://localhost:8080',
+        changeOrigin: true,
+      },
+    },
   },
 };
 
