@@ -5,6 +5,8 @@ import { Switch, Route, Redirect } from 'react-router-dom';
 const LogIn = loadable(() => import('@pages/LogIn'));
 const SignUp = loadable(() => import('@pages/SignUp'));
 const SignUp2 = loadable(() => import('@pages/SignUp/SignUp2'));
+const MyBookRecord = loadable(() => import('@pages/MyBookRecord'));
+const BRWrite = loadable(() => import('@pages/MyBookRecord/BRWrite'));
 const Discussion = loadable(() => import('@pages/Discussion'));
 const DCContent = loadable(() => import('@pages/Discussion/DCContent'));
 const DCWrite = loadable(() => import('@pages/Discussion/DCWrite'));
@@ -15,6 +17,8 @@ const App = () => {
     <Switch>
       <Redirect exact path="/" to="/login" />
       <Route path="/login" component={LogIn} />
+      <Route path="/mybookrecord/write" component={BRWrite} />
+      <Route path="/mybookrecord" component={MyBookRecord} />
       <Route path="/discussion/write" component={DCWrite} />
       <Route path="/discussion/content" component={DCContent} />
       <Route path="/discussion" component={Discussion} />
