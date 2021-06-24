@@ -1,5 +1,5 @@
 import React from 'react';
-import { Container, Form, WriteHeader, Input, TextArea, Button } from '@components/WriteForm/styles';
+import { Container, Form, WriteHeader, Input, TextArea, Button } from '@components/DiscussionWriteForm/styles';
 
 const WriteForm = () => {
   return (
