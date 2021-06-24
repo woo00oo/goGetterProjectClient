@@ -1,7 +1,7 @@
 import React from 'react';
 import Header from '@layouts/Header';
 import Footer from '@layouts/Footer';
-import WriteForm from '@components/WriteForm';
+import DiscussionWriteForm from '@components/DiscussionWriteForm';
 import { Container, DCContainer } from '@pages/Discussion/DCWrite/styles';
 
 const DCWrite = () => {
@@ -10,7 +10,7 @@ const DCWrite = () => {
       <DCContainer>
         <Header />
         <Container>
-          <WriteForm></WriteForm>
+          <DiscussionWriteForm></DiscussionWriteForm>
         </Container>
       </DCContainer>
       <Footer />

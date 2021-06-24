@@ -89,6 +89,7 @@ export const Button = styled.button`
   &:hover {
     background-color: rgba(15, 76, 129, 0.8);
     border: none;
+    cursor: pointer;
   }
   &:focus {
     --saf-0: rgba(var(--sk_highlight, 18, 100, 163), 1);
