@@ -53,6 +53,7 @@ export const Input = styled.input`
 `;
 
 export const TextArea = styled.textarea`
+  resize: none;
   border-radius: 3px;
   border: 1px solid #ced4da;
   transition: border 80ms ease-out, box-shadow 80ms ease-out;
