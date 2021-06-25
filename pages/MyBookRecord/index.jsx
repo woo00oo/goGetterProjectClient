@@ -32,9 +32,11 @@ const MyBookRecord = () => {
             <Wrapper>
               <Ul>
                 <Li>
-                  <div className="imgDiv">
-                    <img src={url}></img>
-                  </div>
+                  <Link to="/mybookrecord/content">
+                    <div className="imgDiv">
+                      <img src={url}></img>
+                    </div>
+                  </Link>
                   <div className="title">예술하는 습관을 읽고</div>
                   <div className="bookTitle">예술하는 습관</div>
                   <div className="date">21-06-24</div>
