@@ -9,6 +9,14 @@ export const Head = styled.header`
   transform: translateX(-50%);
 `;
 
+export const Head2 = styled.div`
+  position: sticky;
+  top: 0;
+  background-color: white;
+  border-bottom: 1px solid #f7f7f5;
+  z-index: 99;
+`;
+
 export const HeaderTop = styled.div`
   width: 120px;
   display: flex;
