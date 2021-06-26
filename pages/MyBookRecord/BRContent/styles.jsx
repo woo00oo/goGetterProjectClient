@@ -65,9 +65,11 @@ export const ContentText = styled.div`
   margin-top: 35px;
   font-size: 17px;
   line-height: 27px;
+  text-align: left;
   & div {
     color: #0f4c81;
     padding-top: 30px;
+    text-align: right;
   }
 `;
 
@@ -82,7 +84,7 @@ export const ContentEdit = styled.div`
 
   & div i {
     font-size: 25px;
-    cursor:pointer;
+    cursor: pointer;
   }
 
   & button {
@@ -90,18 +92,23 @@ export const ContentEdit = styled.div`
     width: 119px;
     height: 42px;
     border-radius: 3px;
-    border:0px;
-    color:white;
+    border: 0px;
+    color: white;
     box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
-    cursor:pointer;
+    cursor: pointer;
   }
 
   & button.edit {
     background: #939597;
+    :hover {
+      background-color: rgba(147, 149, 151, 0.8);
+    }
   }
 
   & button.delete {
     background: #900020;
-  }
+    :hover {
+      background-color: rgba(144, 0, 32, 0.8);
+    }
   }
 `;
