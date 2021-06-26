@@ -1,9 +1,18 @@
 import React, { useState, useCallback } from 'react';
-import { Modal, ModalBtn, ModalWrapper, MainText, SubText, Container, TextInput } from '@components/Modal/Auth/styles';
+import {
+  Modal,
+  ModalBtn,
+  ModalWrapper,
+  MainText,
+  SubText,
+  Container,
+  TextInput,
+  AuthCheckBtn,
+} from '@components/Modal/Auth/styles';
 import axios from 'axios';
 import { toast } from 'react-toastify';
 
-const Auth = ({ authModalOpen, setAuthModalOpen, email }) => {
+const Auth = ({ authModalOpen, setAuthModalOpen, setEmailAuthCheck, email }) => {
   const [sendMail, setSendMail] = useState(false);
   const [authNumber, setAuthNumber] = useState('');
 
@@ -14,14 +23,18 @@ const Auth = ({ authModalOpen, setAuthModalOpen, email }) => {
 
   const onChangeSendMail = useCallback(
     (e) => {
-      setSendMail(!sendMail);
+      setSendMail(false);
 
       axios
         .get(`/api/email-confirm?email=${email}`, {
           withCredentials: true,
         })
         .then((res) => {
-          console.log(res);
+          if (res.data.message === '이메일중복') {
+            alert('이미 가입된 이메일입니다.');
+          } else {
+            setSendMail(!sendMail);
+          }
         })
         .catch((err) => {
           console.dir(err);
@@ -40,14 +53,20 @@ const Auth = ({ authModalOpen, setAuthModalOpen, email }) => {
   const onAuthConfirm = useCallback(
     (e) => {
       e.preventDefault();
-      console.log(authNumber);
+      setEmailAuthCheck(false);
+      // console.log(authNumber);
 
       axios
         .get(`/api/issuance-confirm?number=${authNumber}`, {
           withCredentials: true,
         })
         .then((res) => {
-          console.log(res);
+          if (res.data.message === '일치') {
+            setEmailAuthCheck(true);
+            onChangeModal();
+          } else {
+            alert('인증 번호가 일치하지 않습니다.');
+          }
         })
         .catch((err) => {
           console.dir(err);
