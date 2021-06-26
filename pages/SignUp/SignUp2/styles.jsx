@@ -123,6 +123,19 @@ export const AuthButton = styled.button`
   }
 `;
 
+export const AuthSuccessBtn = styled.button`
+  border-radius: 3px;
+  border: none;
+  background-color: #939597;
+  width: 100px;
+  height: 38px;
+  color: white;
+  margin-left: 7px;
+  cursor: pointer;
+  margin-top: 8px;
+  pointer-events: none;
+`;
+
 export const SignUpButton = styled.button`
   font-size: 16px;
   color: white;
