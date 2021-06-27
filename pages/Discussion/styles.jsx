@@ -42,8 +42,8 @@ export const DCSearch = styled.div`
 `;
 
 export const DCTable = styled.table`
-  border-top: 1px solid #0f4c81;
   width: 100%;
+  border-top: 0.5px solid #0f4c81;
   border-collapse: collapse;
   margin-top: 12px;
 `;
