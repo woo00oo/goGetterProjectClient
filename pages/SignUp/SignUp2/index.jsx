@@ -24,10 +24,12 @@ import ServiceModal from '@components/Modal/Service';
 import useInput from '@hooks/useInput';
 import pwEncrypt from '@utils/pwEncrypt';
 import axios from 'axios';
+import { Redirect } from 'react-router';
 
 const SignUp2 = () => {
   const pwCheck = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[$@$!%*#?&])[A-Za-z\d$@$!%*#?&]{8,16}$/;
   const nickNameCheck = /^[ㄱ-ㅎ|가-힣|a-z|A-Z|0-9|]{4,16}$/;
+  const [signUpSuccess, setSignUpSuccess] = useState(false);
 
   const [email, onChangeEmail] = useInput('');
   const [name, onChangeName] = useInput('');
@@ -87,40 +89,45 @@ const SignUp2 = () => {
   const onSubmit = useCallback(
     (e) => {
       e.preventDefault();
+      const pwHash = pwEncrypt(password);
 
-      console.log(password);
-      console.log(pwEncrypt(password));
-      // if (!emailAuthCheck) {
-      //   alert('이메일 인증을 먼저 해주세요');
-      // } else if (!pwCheck.test(password)) {
-      //   alert('비밀번호 오류');
-      // } else if (!nickNameCheck.test(nickName)) {
-      //   alert('닉네임 오류');
-      // } else if (!name.length || !name.trim().length) {
-      //   alert('이름 오류');
-      // } else if (!phoneNumber.length || !phoneNumber.trim().length) {
-      //   alert('휴대폰 번호 오류');
-      // } else if (!terms) {
-      //   alert('이용 약관 동의하세요');
-      // } else {
-      //   axios
-      //     .post('/api/signup', {
-      //       email,
-      //       name,
-      //       nickName,
-      //       password,
-      //       phoneNumber,
-      //     })
-      //     .then((res) => {
-      //       console.log(res);
-      //     })
-      //     .catch((err) => {
-      //       console.dir(err);
-      //     });
-      // }
+      if (!emailAuthCheck) {
+        alert('이메일 인증을 먼저 해주세요');
+      } else if (!pwCheck.test(password)) {
+        alert('비밀번호 오류');
+      } else if (!nickNameCheck.test(nickName)) {
+        alert('닉네임 오류');
+      } else if (!name.length || !name.trim().length) {
+        alert('이름 오류');
+      } else if (!phoneNumber.length || !phoneNumber.trim().length) {
+        alert('휴대폰 번호 오류');
+      } else if (!terms) {
+        alert('이용 약관 동의하세요');
+      } else {
+        axios
+          .post('/api/signup', {
+            email,
+            name,
+            nick_name: nickName,
+            password: pwHash,
+            phone_number: phoneNumber,
+          })
+          .then((res) => {
+            console.log(res);
+            setSignUpSuccess(true);
+            alert('회원 가입 성공');
+          })
+          .catch((err) => {
+            console.dir(err);
+          });
+      }
     },
     [email, password, name, phoneNumber, nickName, pwCheck],
   );
+
+  if (signUpSuccess) {
+    return <Redirect to="/login" />;
+  }
 
   return (
     <div id="container" style={{ height: '100%' }}>
