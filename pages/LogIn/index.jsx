@@ -1,10 +1,48 @@
-import React from 'react';
+import React, { useCallback, useState } from 'react';
 import { AllDiv, LoginDiv, Form, Login, Input, Button, Search, Social, FaceBook, Google } from '@pages/LogIn/styles';
 import { Link } from 'react-router-dom';
 import Header from '@layouts/Header';
 import Footer from '@layouts/Footer';
+import useInput from '@hooks/useInput';
+import { Redirect } from 'react-router';
+import pwEncrypt from '@utils/pwEncrypt';
+import axios from 'axios';
 
-const LogIn = () => {
+const LogIn = (props) => {
+  const [email, onChangeEmail] = useInput('');
+  const [password, onChangePassword] = useInput('');
+  const [loginSuccess, setLoginSuccess] = useState(false);
+
+  const onSubmit = useCallback(
+    (e) => {
+      e.preventDefault();
+      const pwHash = pwEncrypt(password);
+
+      axios
+        .post(
+          '/api/signin',
+          { email, password: pwHash },
+          {
+            withCredentials: true,
+          },
+        )
+        .then((res) => {
+          console.log(res);
+          if (res.data.data.access_token) {
+            setLoginSuccess(true);
+            // props.history.push('/main');
+            // window.location.reload();
+            localStorage.setItem('user', JSON.stringify(res.data.data));
+          }
+        });
+    },
+    [email, password],
+  );
+
+  if (loginSuccess) {
+    return <Redirect to="/" />;
+  }
+
   return (
     <div id="container" style={{ height: '100%' }}>
       <AllDiv>
@@ -12,15 +50,29 @@ const LogIn = () => {
         <LoginDiv>
           <Login>
             <h2>로그인</h2>
-            <Form>
+            <Form onSubmit={onSubmit}>
               <span>
                 <Link to="/signup">우도독 가입하기</Link>
               </span>
               <div id="email">
-                <Input type="email" id="email" name="email" placeholder="이메일" />
+                <Input
+                  type="email"
+                  id="email"
+                  name="email"
+                  placeholder="이메일"
+                  value={email}
+                  onChange={onChangeEmail}
+                />
               </div>
               <div id="password">
-                <Input type="password" id="password" name="password" placeholder="비밀번호" />
+                <Input
+                  type="password"
+                  id="password"
+                  name="password"
+                  placeholder="비밀번호"
+                  value={password}
+                  onChange={onChangePassword}
+                />
               </div>
               <Button type="submit">로그인</Button>
             </Form>
