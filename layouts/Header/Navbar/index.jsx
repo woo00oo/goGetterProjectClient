@@ -3,7 +3,6 @@ import { Fixed, Inner, LinkClicked } from '@layouts/Header/Navbar/styles';
 import { Link } from 'react-router-dom';
 
 const Navbar = () => {
-  const [clicked, setClicked] = useState(false);
   const pathname = window.location.pathname;
   return (
     <Fixed>

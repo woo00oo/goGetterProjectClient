@@ -2,6 +2,7 @@ import React from 'react';
 import loadable from '@loadable/component';
 import { Switch, Route, Redirect } from 'react-router-dom';
 
+const Main = loadable(() => import('@pages/Main'));
 const LogIn = loadable(() => import('@pages/LogIn'));
 const SignUp = loadable(() => import('@pages/SignUp'));
 const SignUp2 = loadable(() => import('@pages/SignUp/SignUp2'));
@@ -16,7 +17,8 @@ const MyPageProfile = loadable(() => import('@pages/MyPage/Profile'));
 const App = () => {
   return (
     <Switch>
-      <Redirect exact path="/" to="/login" />
+      <Redirect exact path="/" to="/main" />
+      <Route path="/main" component={Main} />
       <Route path="/login" component={LogIn} />
       <Route path="/mybookrecord/content" component={BRContent} />
       <Route path="/mybookrecord/write" component={BRWrite} />
