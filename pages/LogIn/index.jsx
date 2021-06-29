@@ -6,52 +6,40 @@ import Footer from '@layouts/Footer';
 import useInput from '@hooks/useInput';
 import { Redirect } from 'react-router';
 import pwEncrypt from '@utils/pwEncrypt';
-import { signin } from '@actions/auth';
-import { useDispatch, useSelector } from 'react-redux';
+import axios from 'axios';
 
 const LogIn = (props) => {
   const [email, onChangeEmail] = useInput('');
   const [password, onChangePassword] = useInput('');
   const [loginSuccess, setLoginSuccess] = useState(false);
 
-  const { isLoggedIn } = useSelector((state) => state.auth);
-  const { message } = useSelector((state) => state.message);
-
-  const dispatch = useDispatch();
-
   const onSubmit = useCallback(
     (e) => {
       e.preventDefault();
       const pwHash = pwEncrypt(password);
 
-      dispatch(signin(email, pwHash))
-        .then(() => {})
-        .catch((err) => {
-          console.dir(err);
+      axios
+        .post(
+          '/api/signin',
+          { email, password: pwHash },
+          {
+            withCredentials: true,
+          },
+        )
+        .then((res) => {
+          console.log(res);
+          if (res.data.data.access_token) {
+            setLoginSuccess(true);
+            // props.history.push('/main');
+            // window.location.reload();
+            localStorage.setItem('user', JSON.stringify(res.data.data));
+          }
         });
-
-      // axios
-      //   .post(
-      //     '/api/signin',
-      //     { email, password: pwHash },
-      //     {
-      //       withCredentials: true,
-      //     },
-      //   )
-      //   .then((res) => {
-      //     console.log(res);
-      //     if (res.data.data.access_token) {
-      //       setLoginSuccess(true);
-      //       // props.history.push('/main');
-      //       // window.location.reload();
-      //       localStorage.setItem('user', JSON.stringify(res.data.data));
-      //     }
-      //   });
     },
     [email, password],
   );
 
-  if (isLoggedIn) {
+  if (loginSuccess) {
     return <Redirect to="/" />;
   }
 
