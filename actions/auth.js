@@ -1,6 +1,6 @@
 import { REGISTER_SUCCESS } from '@actions/type';
 import authService from '@apis/authService';
-import { LOGIN_FAIL, LOGIN_SUCCESS, LOGOUT, REGISTER_FAIL, SET_MESSAGE } from './type';
+import { LOGIN_FAIL, LOGIN_SUCCESS, LOGOUT, REGISTER_FAIL, SET_MESSAGE, AUTH_USER } from './type';
 
 export const signup = (email, name, nick_name, password, phone_number) => (dispatch) => {
   return authService.signup(email, name, nick_name, password, phone_number).then(
@@ -36,6 +36,7 @@ export const signup = (email, name, nick_name, password, phone_number) => (dispa
 export const signin = (email, password) => (dispatch) => {
   return authService.signin(email, password).then(
     (data) => {
+      console.log(data);
       dispatch({
         type: LOGIN_SUCCESS,
         payload: { user: data },
@@ -66,5 +67,14 @@ export const logout = () => (dispatch) => {
 
   dispatch({
     type: LOGOUT,
+  });
+};
+
+export const auth = () => (dispatch) => {
+  const request = axios.get('/api/user/auth').then((res) => res.data);
+
+  dispatch({
+    type: AUTH_USER,
+    payload: request,
   });
 };
