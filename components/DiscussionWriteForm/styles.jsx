@@ -12,7 +12,7 @@ export const WriteHeader = styled.h2`
   padding: 50px 30px;
 `;
 
-export const Form = styled.div`
+export const Form = styled.form`
   margin: 0px 80px;
   height: auto;
   min-height: 100%;
