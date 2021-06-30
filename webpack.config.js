@@ -17,6 +17,10 @@ const config = {
       '@pages': path.resolve(__dirname, 'pages'),
       '@utils': path.resolve(__dirname, 'utils'),
       '@typings': path.resolve(__dirname, 'typings'),
+      '@actions': path.resolve(__dirname, 'actions'),
+      '@apis': path.resolve(__dirname, 'apis'),
+      '@reducers': path.resolve(__dirname, 'reducers'),
+      '@stores': path.resolve(__dirname, 'stores'),
     },
   },
   entry: {

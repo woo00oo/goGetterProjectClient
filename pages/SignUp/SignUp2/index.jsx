@@ -25,6 +25,8 @@ import useInput from '@hooks/useInput';
 import pwEncrypt from '@utils/pwEncrypt';
 import axios from 'axios';
 import { Redirect } from 'react-router';
+import { useSelector, useDispatch } from 'react-redux';
+import { signup } from '@actions/auth';
 
 const SignUp2 = () => {
   const pwCheck = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[$@$!%*#?&])[A-Za-z\d$@$!%*#?&]{8,16}$/;
@@ -45,6 +47,9 @@ const SignUp2 = () => {
   const [serviceModalOpen, setServiceModalOpen] = useState(false);
 
   const [mismatchError, setMismatchError] = useState(false);
+
+  const { message } = useSelector((state) => state.message);
+  const dispatch = useDispatch();
 
   const onChangePassword = useCallback(
     (e) => {
@@ -104,22 +109,31 @@ const SignUp2 = () => {
       } else if (!terms) {
         alert('이용 약관 동의하세요');
       } else {
-        axios
-          .post('/api/signup', {
-            email,
-            name,
-            nick_name: nickName,
-            password: pwHash,
-            phone_number: phoneNumber,
-          })
-          .then((res) => {
-            console.log(res);
+        dispatch(signup(email, name, nickName, password, phoneNumber))
+          .then(() => {
             setSignUpSuccess(true);
             alert('회원 가입 성공');
           })
           .catch((err) => {
             console.dir(err);
           });
+
+        // axios
+        //   .post('/api/signup', {
+        //     email,
+        //     name,
+        //     nick_name: nickName,
+        //     password: pwHash,
+        //     phone_number: phoneNumber,
+        //   })
+        //   .then((res) => {
+        //     console.log(res);
+        //     setSignUpSuccess(true);
+        //     alert('회원 가입 성공');
+        //   })
+        //   .catch((err) => {
+        //     console.dir(err);
+        //   });
       }
     },
     [email, password, name, phoneNumber, nickName, pwCheck],
