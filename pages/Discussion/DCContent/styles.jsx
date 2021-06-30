@@ -9,7 +9,11 @@ export const Container = styled.div`
   margin-bottom: 100px;
 `;
 
-export const DCContainer = styled.div``;
+export const DCContainer = styled.div`
+  height: auto;
+  min-height: 100%;
+  padding-bottom: 300px;
+`;
 
 export const SubHeader = styled.h2`
   padding: 50px 30px;
@@ -59,4 +63,34 @@ export const SubArticle = styled.article`
   padding: 30px;
   font-size: 18px;
   line-height: 30px;
+`;
+
+export const DCEdit = styled.div`
+  display: flex;
+  justify-content: center;
+
+  & button {
+    margin-left: 15px;
+    width: 119px;
+    height: 42px;
+    border-radius: 3px;
+    border: 0px;
+    background-color: white;
+    color: #900020;
+    cursor: pointer;
+  }
+
+  & button.edit {
+    background: #939597;
+    :hover {
+      background-color: rgba(147, 149, 151, 0.8);
+    }
+  }
+
+  & button.delete {
+    border: 1px solid #900020;
+    :hover {
+      background-color: rgba(144, 0, 32, 0.8);
+    }
+  }
 `;

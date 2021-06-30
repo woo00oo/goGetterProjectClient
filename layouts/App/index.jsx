@@ -24,7 +24,7 @@ const App = () => {
       <Route path="/mybookrecord/write" component={BRWrite} />
       <Route path="/mybookrecord" component={MyBookRecord} />
       <Route path="/discussion/write" component={DCWrite} />
-      <Route path="/discussion/content" component={DCContent} />
+      <Route path="/discussion/content/:id" component={DCContent} />
       <Route path="/discussion" component={Discussion} />
       <Route path="/signup" component={SignUp} />
       <Route path="/signup2" component={SignUp2} />

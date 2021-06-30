@@ -2,7 +2,7 @@ import styled from '@emotion/styled';
 
 export const Container = styled.div`
   width: 1200px;
-  height: 100vh;
+  /* height: 100vh; */
   position: relative;
   left: 50%;
   transform: translateX(-50%);
@@ -10,6 +10,12 @@ export const Container = styled.div`
 `;
 export const DCHeader = styled.h2`
   padding: 50px 30px;
+`;
+
+export const DCContainer = styled.div`
+  height: auto;
+  min-height: 100%;
+  padding-bottom: 300px;
 `;
 
 export const DCSearch = styled.div`
@@ -86,6 +92,11 @@ export const DCMain = styled.tbody`
   & td.title {
     text-align: left;
     padding-left: 40px;
+  }
+
+  & td.title > a {
+    text-decoration: none;
+    color: black;
   }
 `;
 
