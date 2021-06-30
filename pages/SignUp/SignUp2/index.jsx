@@ -22,7 +22,6 @@ import Footer from '@layouts/Footer';
 import AuthModal from '@components/Modal/Auth';
 import ServiceModal from '@components/Modal/Service';
 import useInput from '@hooks/useInput';
-import pwEncrypt from '@utils/pwEncrypt';
 import axios from 'axios';
 import { Redirect } from 'react-router';
 import { useSelector, useDispatch } from 'react-redux';
@@ -41,7 +40,7 @@ const SignUp2 = () => {
   const [phoneNumber, setPhoneNumber] = useState('');
   const [check, setCheck] = useState(0);
   const [emailAuthCheck, setEmailAuthCheck] = useState(false);
-  const [terms, onClickTerms] = useInput(false);
+  const [terms, onChangeTerms] = useInput(false);
 
   const [authModalOpen, setAuthModalOpen] = useState(false);
   const [serviceModalOpen, setServiceModalOpen] = useState(false);
@@ -94,7 +93,6 @@ const SignUp2 = () => {
   const onSubmit = useCallback(
     (e) => {
       e.preventDefault();
-      const pwHash = pwEncrypt(password);
 
       if (!emailAuthCheck) {
         alert('이메일 인증을 먼저 해주세요');
@@ -253,7 +251,7 @@ const SignUp2 = () => {
             </FormGroup>
             <FormCheck>
               <div>
-                <input type="checkbox" id="terms" name="terms" value={terms} onClick={onClickTerms} />
+                <input type="checkbox" id="terms" name="terms" value={terms} onClick={onChangeTerms} />
                 <CheckText>
                   우도독의{' '}
                   <a id="check1" onClick={onClickServiceButton}>
