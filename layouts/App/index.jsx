@@ -1,6 +1,7 @@
 import React from 'react';
 import loadable from '@loadable/component';
 import { Switch, Route, Redirect } from 'react-router-dom';
+import Auth from '../../hoc/auth';
 
 const Main = loadable(() => import('@pages/Main'));
 const LogIn = loadable(() => import('@pages/LogIn'));
