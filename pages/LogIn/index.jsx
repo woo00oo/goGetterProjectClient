@@ -25,7 +25,9 @@ const LogIn = (props) => {
       const pwHash = pwEncrypt(password);
 
       dispatch(signin(email, pwHash))
-        .then(() => {})
+        .then(() => {
+          props.history.push('/main');
+        })
         .catch((err) => {
           console.dir(err);
         });
@@ -52,7 +54,7 @@ const LogIn = (props) => {
   );
 
   if (isLoggedIn) {
-    return <Redirect to="/" />;
+    props.history.push('/main');
   }
 
   return (
