@@ -1,33 +1,50 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { auth } from '@actions/auth';
 
-export default (SpecificComponent, option, adminRoute = null) => {
+export default (SpecificComponent, permission) => {
   /* 
-     예)  option: null -> 누구나 출입이 가능한 페이지 (메인, 로그인, 회원가입, 독서공유, 토론게시판, 이벤트)
-                  true -> 로그인한 유저만 출입이 가능한 페이지 (독서기록, 마이페이지)
-                  false -> 로그인한 유저는 출입이 불가능한 페이지 (로그인 , 회원가입)
-                  adminRoute -> true일 경우 관리자만 들어갈 수 있는 페이지
+
+    우도독) permission:
+              GUEST -> 비회원
+              USER -> 로그인한 유저
+              ADMIN -> 관리자
+              BLACK -> 블랙리스트
   */
 
   const AuthenticateCheck = (props) => {
-    // const isLoggedIn = useSelector((state) => state.auth.isLoggedIn);
+    const userId = useSelector((state) => state.auth.user);
     const dispatch = useDispatch();
 
-    useEffect(() => {
-      dispatch(auth()).then((res) => {
-        if (!res.payload.isAuth) {
-          if (option) {
-            props.history.push('/login');
-          }
-        } else {
-          if (adminRoute && !res.payload.isAdmin) {
-            props.history.push('/');
-          } else {
-            props.history.push('/');
-          }
+    if (userId === null) {
+      if (permission !== 'GUEST') {
+        alert('접근 권한이 없습니다.');
+        props.history.push('/');
+        window.location.reload();
+      } else if (userId) {
+      }
+    } else {
+      // useEffect(() => {
+      //   dispatch(auth(userId.user_id)).then((res) => {
+      //     const userPermission = res.permission;
+      //     if (permission === 'GUEST') {
+      //       props.history.push('/');
+      //       window.location.reload();
+      //     }
+      //   });
+      // }, []);
+      const userPermission = userId.user_grade;
+      if (permission === 'GUEST') {
+        props.history.push('/');
+        window.location.reload();
+      } else if (permission === 'ADMIN') {
+        if (userPermission !== 'ADMIN') {
+          alert('접근 권한이 없습니다.');
+          props.history.push('/');
+          window.location.reload();
         }
-      });
-    }, []);
+      }
+    }
 
     return <SpecificComponent />;
   };
