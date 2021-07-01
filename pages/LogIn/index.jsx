@@ -27,6 +27,7 @@ const LogIn = (props) => {
       dispatch(signin(email, pwHash))
         .then(() => {
           props.history.push('/main');
+          window.location.reload();
         })
         .catch((err) => {
           console.dir(err);
