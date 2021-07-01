@@ -2,6 +2,7 @@ import React from 'react';
 import loadable from '@loadable/component';
 import { Switch, Route, Redirect } from 'react-router-dom';
 import Auth from '../../hoc/auth';
+import ScrollToTop from '../../utils/scrollToTop';
 
 const Main = loadable(() => import('@pages/Main'));
 const LogIn = loadable(() => import('@pages/LogIn'));
@@ -17,20 +18,24 @@ const MyPageProfile = loadable(() => import('@pages/MyPage/Profile'));
 
 const App = () => {
   return (
-    <Switch>
-      <Redirect exact path="/" to="/main" />
-      <Route path="/main" component={Main} />
-      <Route path="/login" component={LogIn} />
-      <Route path="/mybookrecord/content" component={BRContent} />
-      <Route path="/mybookrecord/write" component={BRWrite} />
-      <Route path="/mybookrecord" component={MyBookRecord} />
-      <Route path="/discussion/write" component={DCWrite} />
-      <Route path="/discussion/content/:id" component={DCContent} />
-      <Route path="/discussion" component={Discussion} />
-      <Route path="/signup" component={SignUp} />
-      <Route path="/signup2" component={SignUp2} />
-      <Route path="/mypage/profile" component={MyPageProfile} />
-    </Switch>
+    <div>
+      <ScrollToTop>
+        <Switch>
+          <Redirect exact path="/" to="/main" />
+          <Route path="/main" component={Main} />
+          <Route path="/login" component={Auth(LogIn, 'GUEST')} />
+          <Route path="/signup" component={Auth(SignUp, 'GUEST')} />
+          <Route path="/signup2" component={Auth(SignUp2, 'GUEST')} />
+          <Route path="/mybookrecord/content" component={BRContent} />
+          <Route path="/mybookrecord/write" component={Auth(BRWrite, 'USER')} />
+          <Route path="/mybookrecord" component={Auth(MyBookRecord, 'USER')} />
+          <Route path="/discussion/write" component={Auth(DCWrite, 'USER')} />
+          <Route path="/discussion/content/:id" component={DCContent} />
+          <Route path="/discussion" component={Discussion} />
+          <Route path="/mypage/profile" component={Auth(MyPageProfile, 'USER')} />
+        </Switch>
+      </ScrollToTop>
+    </div>
   );
 };
 
