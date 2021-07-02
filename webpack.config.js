@@ -21,6 +21,7 @@ const config = {
       '@apis': path.resolve(__dirname, 'apis'),
       '@reducers': path.resolve(__dirname, 'reducers'),
       '@stores': path.resolve(__dirname, 'stores'),
+      '@hoc': path.resolve(__dirname, 'hoc'),
     },
   },
   entry: {

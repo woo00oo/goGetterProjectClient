@@ -1,13 +1,15 @@
 import axios from 'axios';
+import pwEncrypt from '@utils/pwEncrypt';
 
 const signup = (email, name, nick_name, password, phone_number) => {
+  const pwHash = pwEncrypt(password);
   return axios.post(
     '/api/signup',
     {
       email,
       name,
       nick_name,
-      password,
+      password: pwHash,
       phone_number,
     },
     {
