@@ -26,7 +26,7 @@ const Navbar = () => {
               </Link>
             </li>
             <li>
-              <Link to="/">독서 공유</Link>
+              <Link to="/shareboard">독서 공유</Link>
             </li>
             <li>
               <Link to="/discussion">
@@ -50,7 +50,7 @@ const Navbar = () => {
               </Link>
             </li>
             <li>
-              <Link to="/">독서 공유</Link>
+              <Link to="/shareboard">독서 공유</Link>
             </li>
             <li>
               <Link to="/discussion">
