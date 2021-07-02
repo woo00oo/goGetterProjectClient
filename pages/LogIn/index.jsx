@@ -1,6 +1,6 @@
 import React, { useCallback, useState } from 'react';
 import { AllDiv, LoginDiv, Form, Login, Input, Button, Search, Social, FaceBook, Google } from '@pages/LogIn/styles';
-import { Link } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 import Header from '@layouts/Header';
 import Footer from '@layouts/Footer';
 import useInput from '@hooks/useInput';
@@ -112,4 +112,4 @@ const LogIn = (props) => {
   );
 };
 
-export default LogIn;
+export default withRouter(LogIn);
