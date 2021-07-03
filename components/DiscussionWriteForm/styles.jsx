@@ -1,18 +1,18 @@
 import styled from '@emotion/styled';
 
 export const Container = styled.div`
-  margin-left: auto;
-  margin-right: auto;
-  margin-bottom: 100px;
-  padding: 0px;
   width: 1200px;
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+  margin-bottom: 200px;
 `;
 
 export const WriteHeader = styled.h2`
   padding: 50px 30px;
 `;
 
-export const Form = styled.form`
+export const Form = styled.div`
   margin: 0px 80px;
   height: auto;
   min-height: 100%;
@@ -96,5 +96,10 @@ export const Button = styled.button`
   &:focus {
     --saf-0: rgba(var(--sk_highlight, 18, 100, 163), 1);
     box-shadow: 0 0 0 1px var(--saf-0), 0 0 0 2px rgba(29, 155, 209, 0.3);
+  }
+
+  & > a {
+    text-decoration: none;
+    color: white;
   }
 `;
