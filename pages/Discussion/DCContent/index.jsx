@@ -13,6 +13,7 @@ import {
   SubArticle,
   DCEdit,
 } from '@pages/Discussion/DCContent/styles';
+import Reply from '@components/Reply';
 import axios from 'axios';
 
 const DCContent = ({ match }) => {
@@ -21,17 +22,18 @@ const DCContent = ({ match }) => {
   const [content, setContent] = useState();
   const [nickName, setNickName] = useState();
   const [date, setDate] = useState();
-  // const [id, setId] = useState();
+  const [userId, setUserId] = useState();
   useEffect(() => {
     axios
-      .get('/api/bkuser/discussions?id=' + id)
+      .get('/api/bkusers/discussions?id=' + id)
       .then((res) => {
         const data = res.data.data;
         setTitle(data.title);
         setContent(data.content);
-        setNickName(data.user_nickname);
+        setNickName(data.user_nick_name);
         setDate(data.create_at);
         setId(data.id);
+        setUserId(data.user.id);
       })
       .catch((e) => {
         console.log(e);
@@ -47,10 +49,9 @@ const DCContent = ({ match }) => {
             <SubTitle>{title}</SubTitle>
             <SubMeta>
               <SubMetaLeft>
-                <span className="divide">{date}</span>
-                <span className="divide">조회수 10</span>
-                <span>
-                  댓글<span className="comment">3</span>
+                <span className="date">{date}</span>|
+                <span className="count">
+                  조회수 <span className="countNo">10</span>
                 </span>
               </SubMetaLeft>
               <SubMetaRight>
@@ -64,6 +65,7 @@ const DCContent = ({ match }) => {
             <button className="edit">수정하기</button>
             <button className="delete">삭제하기</button>
           </DCEdit>
+          <Reply discussionId={id}></Reply>
         </Container>
       </DCContainer>
       <Footer></Footer>
