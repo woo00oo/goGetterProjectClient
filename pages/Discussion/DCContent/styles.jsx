@@ -2,11 +2,12 @@ import styled from '@emotion/styled';
 
 export const Container = styled.div`
   width: 1200px;
-  height: 100vh;
   position: relative;
   left: 50%;
   transform: translateX(-50%);
-  margin-bottom: 100px;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 200px;
 `;
 
 export const DCContainer = styled.div`
@@ -20,7 +21,7 @@ export const SubHeader = styled.h2`
 `;
 
 export const MainContainer = styled.div`
-  height: 500px;
+  height: 400px;
 `;
 
 export const SubTitle = styled.div`
@@ -39,13 +40,15 @@ export const SubMetaLeft = styled.div`
   font-size: 15px;
   padding: 10px;
   color: #939597;
-  & span.comment {
-    color: #0f4c81;
+  & .date {
+    margin-right: 10px;
   }
-
-  & span.divide::after {
-    padding: 10px;
-    content: '|';
+  & .count {
+    margin-left: 10px;
+  }
+  & .countNo {
+    color: #0f4c81;
+    font-weight: bold;
   }
 `;
 
@@ -81,16 +84,11 @@ export const DCEdit = styled.div`
   }
 
   & button.edit {
-    background: #939597;
-    :hover {
-      background-color: rgba(147, 149, 151, 0.8);
-    }
+    border: 1px solid #900020;
+    background: white;
   }
 
   & button.delete {
     border: 1px solid #900020;
-    :hover {
-      background-color: rgba(144, 0, 32, 0.8);
-    }
   }
 `;
