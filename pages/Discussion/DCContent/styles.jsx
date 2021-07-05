@@ -81,11 +81,7 @@ export const DCEdit = styled.div`
     background-color: white;
     color: #900020;
     cursor: pointer;
-  }
-
-  & button.edit {
     border: 1px solid #900020;
-    background: white;
   }
 
   & button.delete {
