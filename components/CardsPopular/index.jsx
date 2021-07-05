@@ -11,7 +11,11 @@ const Cards = (props) => {
         {/* <Link to="/shareboard/detail" style={{ textDecoration: 'none', color: '#000', hover: '#000' }}></Link> */}
         <div class="card" style={{ borderRadius: '5px' }}>
           {/* <div class="card-header">My Card</div> */}
-          <img style={{ borderTopLeftRadius: '5px', borderTopRightRadius: '5px' }} src="images/book_img.jpg" alt="" />
+          <img
+            style={{ borderTopLeftRadius: '5px', borderTopRightRadius: '5px', maxHeight: '250px' }}
+            src="images/placeholder.png"
+            alt=""
+          />
           <div class="card-body" style={{ textAlign: 'right' }}>
             <Title>글 제목</Title>
             <Content>
