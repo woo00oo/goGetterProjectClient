@@ -15,17 +15,29 @@ import {
 } from '@pages/Discussion/DCContent/styles';
 import Reply from '@components/Reply';
 import axios from 'axios';
+import { useSelector, useStore } from 'react-redux';
+import { Link } from 'react-router-dom';
+import CheckModal from '@components/Modal/Check';
 
 const DCContent = ({ match }) => {
+  const users = useSelector((state) => state.auth.user);
+  const currentId = users.user_id;
   const { id } = match.params;
+  const [Id, setId] = useState();
   const [title, setTitle] = useState();
   const [content, setContent] = useState();
   const [nickName, setNickName] = useState();
   const [date, setDate] = useState();
   const [userId, setUserId] = useState();
+  const [checkModalOpen, setCheckModalOpen] = useState(false);
+
+  const onClickCheckBtn = (e) => {
+    setCheckModalOpen(true);
+  };
+
   useEffect(() => {
     axios
-      .get('/api/bkusers/discussions?id=' + id)
+      .get(`/api/bkusers/discussions/${id}?userId=${currentId}`)
       .then((res) => {
         const data = res.data.data;
         setTitle(data.title);
@@ -33,7 +45,7 @@ const DCContent = ({ match }) => {
         setNickName(data.user_nick_name);
         setDate(data.create_at);
         setId(data.id);
-        setUserId(data.user.id);
+        setUserId(data.user_id);
       })
       .catch((e) => {
         console.log(e);
@@ -41,6 +53,7 @@ const DCContent = ({ match }) => {
   }, []);
   return (
     <div style={{ height: '100%' }}>
+      <CheckModal setCheckModalOpen={checkModalOpen} />
       <DCContainer>
         <Header></Header>
         <Container>
@@ -61,10 +74,25 @@ const DCContent = ({ match }) => {
             </SubMeta>
             <SubArticle>{content}</SubArticle>
           </MainContainer>
-          <DCEdit>
-            <button className="edit">수정하기</button>
-            <button className="delete">삭제하기</button>
-          </DCEdit>
+          {userId === currentId ? (
+            <DCEdit>
+              <Link
+                to={{
+                  pathname: `/discussion/edit/${Id}`,
+                  state: {
+                    title,
+                    content,
+                  },
+                }}
+              >
+                <button className="edit">수정하기</button>
+              </Link>
+              <button className="delete" onClick={onClickCheckBtn}>
+                삭제하기
+              </button>
+            </DCEdit>
+          ) : null}
+
           <Reply discussionId={id}></Reply>
         </Container>
       </DCContainer>
