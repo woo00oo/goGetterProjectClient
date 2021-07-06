@@ -2,7 +2,7 @@ import React, { useState, useCallback } from 'react';
 import { Container, Form, WriteHeader, Input, TextArea, Button } from '@components/DiscussionEditForm/styles';
 import useInput from '@hooks/useInput';
 import axios from 'axios';
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 
 const EditForm = ({ title, content, Id }) => {
@@ -18,7 +18,7 @@ const EditForm = ({ title, content, Id }) => {
       .patch(`/api/users/discussions/edit/${Id}?userId=${users.user_id}`, {
         content: contentValue,
         title: titleValue,
-        create_at: '2021-07-04',
+        create_at: '2021-07-05',
       })
       .then((res) => {
         console.log(res);
@@ -60,11 +60,11 @@ const EditForm = ({ title, content, Id }) => {
               value={contentValue}
             />
           </div>{' '}
-          <Link to={{ pathname: `/discussion/content/${Id}` }}>
+          <Redirect to={{ pathname: `/discussion/content/${Id}` }}>
             <Button type="submit" onClick={onSubmit}>
               수정하기
             </Button>
-          </Link>
+          </Redirect>
         </Form>
       </Container>
     </div>
