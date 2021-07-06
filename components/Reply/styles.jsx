@@ -44,10 +44,15 @@ export const ReplyContent = styled.div`
   width: 100%;
   align-self: center;
   font-size: 16px;
-  & div.delete {
+  & button {
     float: right;
     color: red;
     font-size: 20px;
+    border: 0px;
+    background-color: white;
+    :hover {
+      cursor: pointer;
+    }
   }
 `;
 export const ReplyWrite = styled.form`
