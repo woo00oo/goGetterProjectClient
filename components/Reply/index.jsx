@@ -1,5 +1,5 @@
 import axios from 'axios';
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useCallback } from 'react';
 import {
   Containers,
   Container,
@@ -9,18 +9,22 @@ import {
   ReplyContent,
   ReplyWrite,
 } from '@components/Reply/styles';
-
+import { useSelector } from 'react-redux';
+import useInput from '@hooks/useInput';
 const Reply = ({ discussionId }) => {
+  const users = useSelector((state) => state.auth.user);
+  const currentId = users.user_id;
   const [reply, setReply] = useState();
   const [count, setCount] = useState(0);
+  const [content, setContent] = useInput('');
 
   useEffect(() => {
     axios
-      .get('/api/bkusers/discussionreplies?discussionId=' + discussionId, {
+      .get(`/api/bkusers/discussionreplies/${discussionId}`, {
         withCredentials: true,
       })
       .then((res) => {
-        const data = res.data.data;
+        const data = res.data.data.content;
         const page = res.data.pagination.total_elements;
         setCount(page);
         setReply(data);
@@ -29,6 +33,19 @@ const Reply = ({ discussionId }) => {
         console.log(err);
       });
   }, []);
+
+  const onSubmit = (e) => {
+    axios
+      .post(`/api/users/discussionreplies/${discussionId}?userId=${currentId}`, {
+        content: content,
+      })
+      .then((res) => {
+        console.log(res);
+      })
+      .catch((err) => {
+        console.dir(err);
+      });
+  };
 
   return (
     <div>
@@ -39,24 +56,39 @@ const Reply = ({ discussionId }) => {
           </div>
           <ReplyDiv>
             {reply?.map((item, idx) => {
-              return <ReplyItem key={idx} item={item} />;
+              return <ReplyItem key={idx} item={item} discussionId={discussionId} currentId={currentId} />;
             })}
           </ReplyDiv>
           <span>답글 쓰기</span>
           <ReplyWrite>
-            <textarea></textarea>
-            <button>등록</button>
+            <textarea value={content} onChange={setContent}></textarea>
+            <button onClick={onSubmit}>등록</button>
           </ReplyWrite>
         </Container>
       </Containers>
     </div>
   );
 };
-
 export default Reply;
 
-const ReplyItem = ({ item }) => {
-  const { id, user_nick_name, content, create_at } = item;
+const ReplyItem = ({ item, discussionId, currentId }) => {
+  const { id, user_id, user_nick_name, content, create_at } = item;
+
+  const onDelete = useCallback(
+    (e) => {
+      axios
+        .delete(`/api/users/discussionreplies/${discussionId}?replyId=${id}&userId=${currentId}`, {
+          withCredentials: true,
+        })
+        .then(() => {
+          window.location.reload();
+        })
+        .catch((err) => {
+          console.dir(err);
+        });
+    },
+    [discussionId, id, currentId], // 넣어줘야함
+  );
   return (
     <ReplyContents>
       <ReplyUser>
@@ -67,7 +99,11 @@ const ReplyItem = ({ item }) => {
         </div>
       </ReplyUser>
       <ReplyContent>
-        <div className="delete">&times;</div>
+        {user_id === currentId ? (
+          <button className="delete" onClick={onDelete}>
+            &times;
+          </button>
+        ) : null}
         <div>{content}</div>
       </ReplyContent>
     </ReplyContents>
