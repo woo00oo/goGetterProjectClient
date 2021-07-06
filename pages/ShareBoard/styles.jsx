@@ -11,8 +11,9 @@ export const Container = styled.div`
 
 export const Title = styled.h2`
   padding: 50px 30px;
-  border-bottom: 1px solid #939597;
+  border-bottom: 1px solid rgba(147, 149, 151, 0.8);
   margin-bottom: 30px;
+  padding-bottom: 30px;
 `;
 
 export const Content = styled.div`
