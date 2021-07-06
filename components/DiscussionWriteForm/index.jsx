@@ -27,7 +27,7 @@ const WriteForm = () => {
       });
   };
   return (
-    <div style={{ height: '100%' }}>
+    <div>
       <Container>
         <WriteHeader>게시글 작성</WriteHeader>
         <Form>

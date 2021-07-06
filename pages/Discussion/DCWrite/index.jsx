@@ -10,7 +10,7 @@ const DCWrite = () => {
       <DCContainer>
         <Header />
         <Container>
-          <DiscussionWriteForm></DiscussionWriteForm>
+          <DiscussionWriteForm />
         </Container>
       </DCContainer>
       <Footer />

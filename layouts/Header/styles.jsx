@@ -14,7 +14,7 @@ export const Head2 = styled.div`
   top: 0;
   background-color: white;
   border-bottom: 1px solid #f7f7f5;
-  z-index: 99;
+  z-index: 8;
 `;
 
 export const HeaderTop = styled.div`

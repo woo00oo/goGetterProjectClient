@@ -1,16 +1,19 @@
 import styled from '@emotion/styled';
 
 export const Container = styled.div`
-  width: 1200px;
-  height: 100vh;
+  /* width: 1200px;
   position: relative;
   left: 50%;
   transform: translateX(-50%);
-  margin-bottom: 100px;
+  margin-bottom: 100px; */
+  padding: 0px 30px;
+  min-height: 100%;
 `;
 
 export const DCContainer = styled.div`
-  height: auto;
-  min-height: 100%;
-  padding-bottom: 300px;
+  width: 1200px;
+  position: relative;
+  left: 50%;
+  transform: translate(-50%);
+  margin-bottom: 100px;
 `;
