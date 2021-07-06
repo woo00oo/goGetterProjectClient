@@ -14,6 +14,8 @@ export const TabDiv = styled.div`
     margin: 0;
     margin-bottom: 20px;
     height: 50px;
+    font-size: 24px;
+    font-weight: bold;
   }
 
   & ul {

@@ -17,7 +17,7 @@ export const MyPageDiv = styled.div`
 
 export const ContentDiv = styled.div`
   width: 950px;
-  padding-top: 30px;
+  padding-top: 40px;
 `;
 
 export const ProfileDiv = styled.div`
@@ -25,7 +25,7 @@ export const ProfileDiv = styled.div`
   position: relative;
   left: 50%;
   transform: translateX(-50%);
-  padding: 0 25px;
+  padding: 10px 25px;
 
   & h2 {
     font-weight: bold;
@@ -47,10 +47,12 @@ export const CantModified = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
+  font-weight: bold;
 
   & span {
     padding-left: 5px;
     margin: 5px;
+    font-weight: normal;
   }
 `;
 
@@ -64,7 +66,7 @@ export const ProfileImage = styled.div`
 
 export const Label = styled.label`
   font-size: 16px;
-  margin-bottom: 50px;
+  margin-bottom: 0px;
 
   & span {
     color: blue;

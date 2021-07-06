@@ -30,7 +30,7 @@ export const FormGroup = styled.div`
 
 export const Label = styled.label`
   font-size: 16px;
-  margin-bottom: 50px;
+  margin-bottom: 0px;
 
   & span {
     color: blue;
