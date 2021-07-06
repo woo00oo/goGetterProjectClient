@@ -1,11 +1,11 @@
 import styled from '@emotion/styled';
 
 export const Container = styled.div`
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 100px;
+  padding: 0px;
   width: 1200px;
-  position: relative;
-  left: 50%;
-  transform: translateX(-50%);
-  margin-bottom: 200px;
 `;
 
 export const WriteHeader = styled.h2`
