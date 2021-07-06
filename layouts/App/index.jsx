@@ -17,6 +17,7 @@ const DCEdit = loadable(() => import('@pages/Discussion/DCEdit'));
 const DCWrite = loadable(() => import('@pages/Discussion/DCWrite'));
 const MyPageProfile = loadable(() => import('@pages/MyPage/Profile'));
 const ShareBoard = loadable(() => import('@pages/ShareBoard'));
+const ShareBoardWrite = loadable(() => import('@pages/ShareBoard/Write'));
 const ShareDetail = loadable(() => import('@pages/ShareBoard/ShareDetail'));
 const MyPageNote = loadable(() => import('@pages/MyPage/Note'));
 
@@ -38,6 +39,7 @@ const App = () => {
           <Route path="/discussion/edit/:id" component={DCEdit} />
           <Route path="/discussion" component={Discussion} />
           <Route path="/shareboard/detail" component={ShareDetail} />
+          <Route path="/shareboard/write" component={ShareBoardWrite} />
           <Route path="/shareboard" component={ShareBoard} />
           <Route path="/mypage/note" component={MyPageNote} />
           <Route path="/mypage/profile" component={Auth(MyPageProfile, 'USER')} />
