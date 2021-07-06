@@ -15,7 +15,7 @@ const WriteForm = () => {
     console.log(users.user_id);
     // e.preventDefault();
     axios
-      .post('/api/users/discussions?userId=' + users.user_id, {
+      .post(`/api/users/discussions/${users.user_id}`, {
         content: content,
         title: title,
       })
@@ -45,10 +45,11 @@ const WriteForm = () => {
               value={content}
             />
           </div>
-          <Button type="submit" onClick={onSubmit}>
-            {/* <Link to="/discussion">작성하기</Link> */}
-            작성하기
-          </Button>
+          <Link to="/discussion">
+            <Button type="submit" onClick={onSubmit}>
+              작성하기
+            </Button>
+          </Link>
         </Form>
       </Container>
     </div>
