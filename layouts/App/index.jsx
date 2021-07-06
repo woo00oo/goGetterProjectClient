@@ -13,6 +13,7 @@ const BRWrite = loadable(() => import('@pages/MyBookRecord/BRWrite'));
 const BRContent = loadable(() => import('@pages/MyBookRecord/BRContent'));
 const Discussion = loadable(() => import('@pages/Discussion'));
 const DCContent = loadable(() => import('@pages/Discussion/DCContent'));
+const DCEdit = loadable(() => import('@pages/Discussion/DCEdit'));
 const DCWrite = loadable(() => import('@pages/Discussion/DCWrite'));
 const MyPageProfile = loadable(() => import('@pages/MyPage/Profile'));
 const ShareBoard = loadable(() => import('@pages/ShareBoard'));
@@ -34,6 +35,7 @@ const App = () => {
           <Route path="/mybookrecord" component={Auth(MyBookRecord, 'USER')} />
           <Route path="/discussion/write" component={Auth(DCWrite, 'USER')} />
           <Route path="/discussion/content/:id" component={DCContent} />
+          <Route path="/discussion/edit/:id" component={DCEdit} />
           <Route path="/discussion" component={Discussion} />
           <Route path="/shareboard/detail" component={ShareDetail} />
           <Route path="/shareboard" component={ShareBoard} />
