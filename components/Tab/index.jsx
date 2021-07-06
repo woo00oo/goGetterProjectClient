@@ -10,10 +10,7 @@ const Tab = () => {
         <Link to="/mypage/profile">
           <li>프로필</li>
         </Link>
-        <Link to="/mypage/profile">
-          <li>작성 글 목록</li>
-        </Link>
-        <Link to="/mypage/profile">
+        <Link to="/mypage/note">
           <li>쪽지함</li>
         </Link>
       </ul>
