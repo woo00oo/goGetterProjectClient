@@ -5,29 +5,34 @@ import { Col } from 'antd';
 import 'antd/dist/antd.css';
 
 const Cards = (props) => {
+  console.log(props);
   return (
-    <Col span={8}>
+    <Col span={6}>
       <Container>
-        {/* <Link to="/shareboard/detail" style={{ textDecoration: 'none', color: '#000', hover: '#000' }}></Link> */}
-        <div class="card" style={{ borderRadius: '5px' }}>
-          {/* <div class="card-header">My Card</div> */}
-          <img
-            style={{ borderTopLeftRadius: '5px', borderTopRightRadius: '5px', maxHeight: '250px' }}
-            src="images/placeholder.png"
-            alt=""
-          />
-          <div class="card-body" style={{ textAlign: 'right' }}>
-            <Title>글 제목</Title>
-            <Content>
-              <BookTitle>책 제목</BookTitle>
-              <DateTime>작성 날짜</DateTime>
-              <Tag>태그</Tag>
-            </Content>
-            <Link to="/shareboard/detail">
+        <Link
+          to={`/shareboard/detail/${props.boardId}`}
+          style={{ textDecoration: 'none', color: '#000', hover: 'none' }}
+        >
+          <div class="card" style={{ borderRadius: '5px' }}>
+            {/* <div class="card-header">My Card</div> */}
+            <img
+              style={{ borderTopLeftRadius: '5px', borderTopRightRadius: '5px', maxHeight: '250px' }}
+              src="images/placeholder.png"
+              alt=""
+            />
+            <div class="card-body" style={{ textAlign: 'right' }}>
+              <Title>{props.title.slice(0, 10) + '...'}</Title>
+              <Content>
+                <BookTitle>{props.bookTitle ? props.bookTitle : '책 제목 없음'}</BookTitle>
+                <DateTime>{props.createdBoard}</DateTime>
+                <Tag>태그</Tag>
+              </Content>
+              {/* <Link to="/shareboard/detail">
               <Detail>자세히</Detail>
-            </Link>
+            </Link> */}
+            </div>
           </div>
-        </div>
+        </Link>
       </Container>
     </Col>
   );
