@@ -16,6 +16,8 @@ const DCContent = loadable(() => import('@pages/Discussion/DCContent'));
 const DCWrite = loadable(() => import('@pages/Discussion/DCWrite'));
 const MyPageProfile = loadable(() => import('@pages/MyPage/Profile'));
 const ShareBoard = loadable(() => import('@pages/ShareBoard'));
+const ShareDetail = loadable(() => import('@pages/ShareBoard/ShareDetail'));
+const MyPageNote = loadable(() => import('@pages/MyPage/Note'));
 
 const App = () => {
   return (
@@ -33,7 +35,9 @@ const App = () => {
           <Route path="/discussion/write" component={Auth(DCWrite, 'USER')} />
           <Route path="/discussion/content/:id" component={DCContent} />
           <Route path="/discussion" component={Discussion} />
+          <Route path="/shareboard/detail" component={ShareDetail} />
           <Route path="/shareboard" component={ShareBoard} />
+          <Route path="/mypage/note" component={MyPageNote} />
           <Route path="/mypage/profile" component={Auth(MyPageProfile, 'USER')} />
         </Switch>
       </ScrollToTop>
