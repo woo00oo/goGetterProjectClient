@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import Header from '@layouts/Header';
 import Footer from '@layouts/Footer';
 import {
@@ -16,19 +16,19 @@ import {
 import Reply from '@components/Reply';
 import axios from 'axios';
 import { useSelector, useStore } from 'react-redux';
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 import CheckModal from '@components/Modal/Check';
 
-const DCContent = ({ match }) => {
+const DCContent = (props) => {
   const users = useSelector((state) => state.auth.user);
   const currentId = users.user_id;
-  const { id } = match.params;
-  const [Id, setId] = useState();
-  const [title, setTitle] = useState();
-  const [content, setContent] = useState();
-  const [nickName, setNickName] = useState();
-  const [date, setDate] = useState();
-  const [userId, setUserId] = useState();
+  const { id } = props.match.params;
+  const [Id, setId] = useState('');
+  const [title, setTitle] = useState('');
+  const [content, setContent] = useState('');
+  const [nickName, setNickName] = useState('');
+  const [date, setDate] = useState('');
+  const [userId, setUserId] = useState('');
   const [checkModalOpen, setCheckModalOpen] = useState(false);
 
   const onClickCheckBtn = (e) => {
@@ -51,9 +51,10 @@ const DCContent = ({ match }) => {
         console.log(e);
       });
   }, []);
+
   return (
     <div style={{ height: '100%' }}>
-      <CheckModal setCheckModalOpen={checkModalOpen} />
+      <CheckModal checkModalOpen={checkModalOpen} setCheckModalOpen={setCheckModalOpen} Id={Id} userId={currentId} />
       <DCContainer>
         <Header></Header>
         <Container>
@@ -69,22 +70,14 @@ const DCContent = ({ match }) => {
               </SubMetaLeft>
               <SubMetaRight>
                 <span>{nickName}</span>
-                <i class="fas fa-user-circle"></i>
+                <i className="fas fa-user-circle"></i>
               </SubMetaRight>
             </SubMeta>
             <SubArticle>{content}</SubArticle>
           </MainContainer>
           {userId === currentId ? (
             <DCEdit>
-              <Link
-                to={{
-                  pathname: `/discussion/edit/${Id}`,
-                  state: {
-                    title,
-                    content,
-                  },
-                }}
-              >
+              <Link to={`/discussion/edit/${id}`}>
                 <button className="edit">수정하기</button>
               </Link>
               <button className="delete" onClick={onClickCheckBtn}>
