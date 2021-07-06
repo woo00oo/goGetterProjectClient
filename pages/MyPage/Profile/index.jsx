@@ -15,7 +15,7 @@ import {
   FormGroup,
   ProfileForm,
   MyPageDiv,
-  ModifiedBtn
+  ModifiedBtn,
 } from '@pages/MyPage/Profile/styles';
 
 const MyPageProfile = () => {
@@ -42,18 +42,15 @@ const MyPageProfile = () => {
               <ProfileForm>
                 <FormGroup>
                   <Label>닉네임</Label>
-                  <br></br>
                   <Input placeholder="닉네임을 입력해주세요." type="text"></Input>
                 </FormGroup>
                 <FormGroup>
                   <Label>비밀번호</Label>
-                  <br></br>
                   <Input placeholder="비밀번호를 입력해주세요." type="password"></Input>
                   <SmallText>비밀번호는 8~16자, 영문, 숫자, 특수문자를 포함해야 합니다.</SmallText>
                 </FormGroup>
                 <FormGroup>
                   <Label>비밀번호 확인</Label>
-                  <br></br>
                   <Input placeholder="비밀번호를 다시 입력해주세요." type="password"></Input>
                 </FormGroup>
                 <ModifiedBtn>수정하기</ModifiedBtn>
