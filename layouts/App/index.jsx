@@ -38,7 +38,7 @@ const App = () => {
           <Route path="/discussion/content/:id" component={DCContent} />
           <Route path="/discussion/edit/:id" component={DCEdit} />
           <Route path="/discussion" component={Discussion} />
-          <Route path="/shareboard/detail" component={ShareDetail} />
+          <Route path="/shareboard/detail/:boardId" component={ShareDetail} />
           <Route path="/shareboard/write" component={ShareBoardWrite} />
           <Route path="/shareboard" component={ShareBoard} />
           <Route path="/mypage/note" component={MyPageNote} />
