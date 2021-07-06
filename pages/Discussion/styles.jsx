@@ -6,7 +6,7 @@ export const Container = styled.div`
   position: relative;
   left: 50%;
   transform: translateX(-50%);
-  margin-bottom: 100px;
+  padding-bottom: 500px;
 `;
 export const DCHeader = styled.h2`
   padding: 50px 30px;
@@ -15,7 +15,9 @@ export const DCHeader = styled.h2`
 export const DCContainer = styled.div`
   height: auto;
   min-height: 100%;
-  padding-bottom: 300px;
+  & div {
+    margin-top: 100px;
+  }
 `;
 
 export const DCSearch = styled.div`
@@ -26,7 +28,7 @@ export const DCSearch = styled.div`
     position: absolute;
     font-size: 16px;
     color: #0f4c81;
-    top: 160px;
+    top: 240px;
     right: 5px;
     z-index: 2;
     cursor: pointer;
@@ -63,6 +65,7 @@ export const DCTitle = styled.thead`
     height: 60px;
     font-size: 15px;
     color: #0f4c81;
+    width: 110px;
   }
 
   & th.textNo {

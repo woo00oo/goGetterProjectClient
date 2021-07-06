@@ -2,33 +2,35 @@ import React, { useState, useCallback } from 'react';
 import { Container, Form, WriteHeader, Input, TextArea, Button } from '@components/DiscussionWriteForm/styles';
 import useInput from '@hooks/useInput';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+
 const WriteForm = () => {
+  const users = useSelector((state) => state.auth.user);
   const [title, onChangeTitle] = useInput('');
   const [content, onChangeContent] = useInput('');
 
-  const onSubmit = useCallback(
-    (e) => {
-      e.preventDefault();
-      axios
-        .post('/api/user/discussions', {
-          title,
-          content,
-        })
-        .then((res) => {
-          console.log(res);
-        })
-        .catch((err) => {
-          console.dir(err);
-        });
-    },
-    [title, content],
-  );
-
+  const onSubmit = (e) => {
+    console.log('LLLLL');
+    console.log(users.user_id);
+    // e.preventDefault();
+    axios
+      .post(`/api/users/discussions/${users.user_id}`, {
+        content: content,
+        title: title,
+      })
+      .then((res) => {
+        console.log(res);
+      })
+      .catch((err) => {
+        console.dir(err);
+      });
+  };
   return (
-    <div>
+    <div style={{ height: '100%' }}>
       <Container>
         <WriteHeader>게시글 작성</WriteHeader>
-        <Form onSubmit={onSubmit}>
+        <Form>
           <div id="title">
             제목
             <Input id="title" name="title" placeholder="제목을 입력해주세요." onChange={onChangeTitle} value={title} />
@@ -43,7 +45,11 @@ const WriteForm = () => {
               value={content}
             />
           </div>
-          <Button type="submit">작성하기</Button>
+          <Link to="/discussion">
+            <Button type="submit" onClick={onSubmit}>
+              작성하기
+            </Button>
+          </Link>
         </Form>
       </Container>
     </div>
