@@ -46,7 +46,7 @@ export default (SpecificComponent, permission) => {
       }
     }
 
-    return <SpecificComponent />;
+    return <SpecificComponent props={props} />;
   };
 
   return AuthenticateCheck;
