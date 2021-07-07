@@ -26,7 +26,9 @@ const Navbar = () => {
               </Link>
             </li>
             <li>
-              <Link to="/shareboard">독서 공유</Link>
+              <Link to="/shareboard">
+                <LinkClicked isActive={pathname.includes('/shareboard')}>독서 공유</LinkClicked>
+              </Link>
             </li>
             <li>
               <Link to="/discussion">
@@ -50,7 +52,9 @@ const Navbar = () => {
               </Link>
             </li>
             <li>
-              <Link to="/shareboard">독서 공유</Link>
+              <Link to="/shareboard">
+                <LinkClicked isActive={pathname.includes('/shareboard')}>독서 공유</LinkClicked>
+              </Link>
             </li>
             <li>
               <Link to="/discussion">
