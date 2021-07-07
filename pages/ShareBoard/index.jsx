@@ -31,6 +31,7 @@ const ShareBoard = (props) => {
         withCredentials: true,
       })
       .then((res) => {
+        // console.log(res);
         setSharedBoards(res.data.data);
       })
       .catch((err) => {
