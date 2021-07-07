@@ -8,7 +8,10 @@ const Header = () => {
     <Head2>
       <Head>
         <HeaderTop>
-          <Link to="/">우도독</Link>
+          <Link to="/">
+            {/* <img alt="" src="images/udodok.jpg" style={{ width: '100px' }} /> */}
+            우도독
+          </Link>
         </HeaderTop>
         <Navbar />
       </Head>
