@@ -7,8 +7,12 @@ import { Row } from 'antd';
 import axios from 'axios';
 import Paging from '@components/Paging';
 import { withRouter } from 'react-router';
+import { useSelector } from 'react-redux';
 
 const MyBookRecord = (props) => {
+  const state = useSelector((state) => state.auth);
+  const userId = state.user.user_id;
+
   const [currentPage, setCurrentPage] = useState(0);
   const [totalElements, setTotalElements] = useState(0);
   const [sharedBoards, setSharedBoards] = useState([]);
@@ -19,14 +23,14 @@ const MyBookRecord = (props) => {
 
   const handlePageChange = (page) => {
     axios
-      .get('/api/bkusers/book-reports', {
+      .get(`/api/bkusers/book-reports/${userId}`, {
         withCredentials: true,
         params: {
           page: page - 1,
         },
       })
       .then((res) => {
-        console.log(res.data);
+        // console.log(res.data);
         setSharedBoards(res.data.data.content);
         // console.log(page);
 
