@@ -15,7 +15,7 @@ const Cards = (props) => {
     <Col span={6}>
       <Container>
         <Link
-          to={`/shareboard/detail/${props.boardId}`}
+          to={props.shareBoards ? `/shareboard/detail/${props.boardId}` : `/mybookrecord/detail/${props.boardId}`}
           style={{ textDecoration: 'none', color: '#000', hover: 'none' }}
         >
           <div class="card" style={{ borderRadius: '5px' }}>
