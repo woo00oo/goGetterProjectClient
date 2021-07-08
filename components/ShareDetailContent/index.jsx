@@ -8,8 +8,16 @@ import {
   ContentText,
   ContentEdit,
 } from '@components/ShareDetailContent/styles';
+import { useSelector } from 'react-redux';
 
 const ShareDetailContent = (props) => {
+  const state = useSelector((state) => state.auth);
+  let userId = -1;
+
+  if (state.user !== null) {
+    userId = state.user.user_id;
+  }
+
   return (
     <div>
       <Content>
@@ -28,10 +36,12 @@ const ShareDetailContent = (props) => {
             {props.content}
             <div id="tag">{props.tag ? props.tag : null}</div>
           </ContentText>
-          <ContentEdit>
-            <button className="edit">수정하기</button>
-            <button className="delete">삭제하기</button>
-          </ContentEdit>
+          {props.writerId === userId && (
+            <ContentEdit>
+              <button className="edit">수정하기</button>
+              <button className="delete">삭제하기</button>
+            </ContentEdit>
+          )}
         </ContentRight>
       </Content>
     </div>
