@@ -59,7 +59,7 @@ const ShareBoard = (props) => {
         },
       })
       .then((res) => {
-        // console.log(res.data);
+        console.log(res.data);
         setSharedBoards(res.data.data);
         // console.log(page);
 
@@ -114,7 +114,7 @@ const ShareBoard = (props) => {
                 sharedBoards.map((board, index) => (
                   <React.Fragment key={index}>
                     <Cards
-                      sharedBoards
+                      share
                       title={board.title}
                       createdBoard={board.created_at}
                       boardId={board.id}
