@@ -11,12 +11,15 @@ const ShareDetail = (props) => {
   const { boardId } = useParams();
   const [post, setPost] = useState([]);
   const [reply, setReply] = useState([]);
+  const [writerId, setWriterId] = useState('');
 
   useEffect(() => {
     axios
       .get(`/api/bkuser/sharings?id=${boardId}`)
       .then((res) => {
+        console.log(res.data.data);
         setPost(res.data.data);
+        setWriterId(res.data.data.writer_info.writer_id);
         // console.log('상세게시판 api', res.data.data);
       })
       .catch((err) => {
@@ -42,7 +45,7 @@ const ShareDetail = (props) => {
     <div style={{ height: '100%' }}>
       <Container>
         <Header />
-        <Title>{post.title}</Title>
+        <Title>상세 페이지</Title>
         <Content>
           <ShareDetailContent
             title={post.title}
@@ -50,6 +53,7 @@ const ShareDetail = (props) => {
             content={post.content}
             create={post.created_at}
             like={post.like_cnt}
+            writerId={writerId}
           />
           <ShareBoardReply
             boardId={boardId}
