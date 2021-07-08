@@ -20,7 +20,9 @@ const ShareBoard = loadable(() => import('@pages/ShareBoard'));
 const ShareBoardWrite = loadable(() => import('@pages/ShareBoard/Write'));
 const ShareDetail = loadable(() => import('@pages/ShareBoard/ShareDetail'));
 const MyPageNote = loadable(() => import('@pages/MyPage/Note'));
-
+const Event = loadable(() => import('@pages/Event/Now'));
+const EventDetail = loadable(() => import('@pages/Event/Detail'));
+const EventEnd = loadable(() => import('@pages/Event/End'));
 const App = () => {
   return (
     <div>
@@ -41,6 +43,9 @@ const App = () => {
           <Route path="/shareboard/detail/:boardId" component={ShareDetail} />
           <Route path="/shareboard/write" component={ShareBoardWrite} />
           <Route path="/shareboard" component={ShareBoard} />
+          <Route path="/event/now/:id" component={EventDetail} />
+          <Route path="/event/now" component={Event} />
+          <Route path="/event/end" component={EventEnd} />
           <Route path="/mypage/note" component={MyPageNote} />
           <Route path="/mypage/profile" component={Auth(MyPageProfile, 'USER')} />
         </Switch>
