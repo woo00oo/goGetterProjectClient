@@ -17,6 +17,7 @@ const ShareDetailContent = (props) => {
   if (state.user !== null) {
     userId = state.user.user_id;
   }
+  // console.log(props);
 
   return (
     <div>
@@ -30,7 +31,7 @@ const ShareDetailContent = (props) => {
         <ContentRight>
           <ContentTitle>
             <div className="title">{props.title}</div>
-            <div className="date">2021-06-25 14:34</div>
+            <div className="date">{props.create}</div>
           </ContentTitle>
           <ContentText>
             {props.content}
