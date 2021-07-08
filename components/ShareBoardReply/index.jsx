@@ -7,9 +7,15 @@ import axios from 'axios';
 import { useSelector } from 'react-redux';
 
 const ShareBoardReply = (props) => {
-  const userId = useSelector((state) => state.auth.user.user_id);
+  // const userId = useSelector((state) => state.auth.user.user_id);
+  const state = useSelector((state) => state.auth);
+  let userId = -1;
   const boardId = props.boardId;
   const [replyContent, onChangeReplyContent] = useInput('');
+
+  if (state.user !== null) {
+    userId = state.user.user_id;
+  }
 
   // console.log(props, boardId, userId);
 
