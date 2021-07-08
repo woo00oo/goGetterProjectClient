@@ -33,7 +33,7 @@ const App = () => {
           <Route path="/login" component={Auth(LogIn, 'GUEST')} />
           <Route path="/signup" component={Auth(SignUp, 'GUEST')} />
           <Route path="/signup2" component={Auth(SignUp2, 'GUEST')} />
-          <Route path="/mybookrecord/content" component={BRContent} />
+          <Route path="/mybookrecord/detail/:boardId" component={BRContent} />
           <Route path="/mybookrecord/write" component={Auth(BRWrite, 'USER')} />
           <Route path="/mybookrecord" component={Auth(MyBookRecord, 'USER')} />
           <Route path="/discussion/write" component={Auth(DCWrite, 'USER')} />
