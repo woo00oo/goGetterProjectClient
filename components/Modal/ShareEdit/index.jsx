@@ -12,7 +12,7 @@ import {
 } from '@components/Modal/ShareEdit/styles';
 import useInput from '@hooks/useInput';
 import { useSelector } from 'react-redux';
-import axios from 'axios';
+import apiController from '@apis/apiController';
 
 const ShareEdit = (props) => {
   // console.log(props);
@@ -34,28 +34,23 @@ const ShareEdit = (props) => {
   const onSubmit = useCallback(
     (e) => {
       e.preventDefault();
-      axios
-        .patch(
-          `/api/user/sharings?id=${boardId}`,
-          {
-            book_title: bookTitle,
-            content,
-            sharing_board_tag: tag,
-            title,
-            user_id: state.user_id,
-          },
-          {
-            withCredentials: true,
-          },
-        )
-        .then((res) => {
-          // console.log(res);
-          alert('수정되었습니다.');
-          props.setSuccessEdit(true);
-        })
-        .catch((err) => {
-          console.dir(err);
-        });
+
+      let params = {
+        book_title: bookTitle,
+        content,
+        sharing_board_tag: tag,
+        title,
+        user_id: state.user_id,
+      };
+
+      apiController({
+        url: `/users/sharings?id=${boardId}`,
+        method: 'patch',
+        data: params,
+      }).then((res) => {
+        alert('수정되었습니다.');
+        props.setSuccessEdit(true);
+      });
     },
     [boardId, title, bookTitle, content, tag, state, props],
   );
