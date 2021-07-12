@@ -9,7 +9,7 @@ import {
   SubText,
   Container,
 } from '@components/Modal/Check/styles';
-import axios from 'axios';
+import apiController from '@apis/apiController';
 
 const ShareDelete = (props) => {
   // console.log(props);
@@ -17,18 +17,13 @@ const ShareDelete = (props) => {
   const onClickDelete = useCallback(
     (e) => {
       e.preventDefault();
-
-      axios
-        .delete(`/api/user/sharings?boardId=${props.boardId}&userId=${props.userId}`, {
-          withCredentials: true,
-        })
-        .then((res) => {
-          alert('삭제되었습니다.');
-          props.setSuccessDelete(true);
-        })
-        .catch((err) => {
-          console.dir(err);
-        });
+      apiController({
+        url: `/users/sharings?boardId=${props.boardId}&userId=${props.userId}`,
+        method: 'delete',
+      }).then((res) => {
+        alert('삭제되었습니다.');
+        props.setSuccessDelete(true);
+      });
     },
     [props],
   );
