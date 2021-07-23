@@ -2,8 +2,7 @@ import React, { useCallback, useEffect, useRef } from 'react';
 import { ChatArea, Form, TextArea, Toolbox, SendButton } from '@components/NoteBox/Detail/ChatBox/styles';
 import autosize from 'autosize';
 
-const ChatBox = () => {
-  const chat = '';
+const ChatBox = ({ chat, onChangeChat, onSubmitForm }) => {
   const textareaRef = useRef(null);
 
   useEffect(() => {
@@ -12,19 +11,22 @@ const ChatBox = () => {
     }
   }, []);
 
-  const onKeydownChat = useCallback((e) => {
-    if (e.key === 'Enter') {
-      if (!e.shiftKey) {
-        e.preventDefault();
-        // onSubmitForm(e);
+  const onKeydownChat = useCallback(
+    (e) => {
+      if (e.key === 'Enter') {
+        if (!e.shiftKey) {
+          e.preventDefault();
+          onSubmitForm(e);
+        }
       }
-    }
-  }, []);
+    },
+    [onSubmitForm],
+  );
 
   return (
     <ChatArea>
-      <Form>
-        <TextArea id="editor=chat" onKeyPress={onKeydownChat} ref={textareaRef} />
+      <Form onSubmit={onSubmitForm}>
+        <TextArea id="editor=chat" onKeyPress={onKeydownChat} ref={textareaRef} value={chat} onChange={onChangeChat} />
         <Toolbox>
           <SendButton
             className={
