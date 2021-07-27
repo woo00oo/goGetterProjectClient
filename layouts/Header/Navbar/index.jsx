@@ -71,20 +71,30 @@ const Navbar = () => {
             <li onClick={onLogout}>
               <Link to="/">로그아웃</Link>
             </li>
-            <li>
-              <Link to={`/mypage/profile/${user.user_id}`}>
-                <LinkClicked isActive={pathname.includes('/mypage')}>
-                  <i class="fas fa-user-circle fa-lg"></i>
-                </LinkClicked>
-              </Link>
-            </li>
-            <li>
-              <Link to="/note">
-                <LinkClicked isActive={pathname.includes('/note')}>
-                  <i class="far fa-bell fa-lg">{/* <span>●</span> */}</i>
-                </LinkClicked>
-              </Link>
-            </li>
+            {user.user_grade === 'ADMIN' ? (
+              <li>
+                <Link to="/admin">
+                  <LinkClicked isActive={pathname.includes('/admin')}>관리자</LinkClicked>
+                </Link>
+              </li>
+            ) : (
+              <>
+                <li>
+                  <Link to={`/mypage/profile/${user.user_id}`}>
+                    <LinkClicked isActive={pathname.includes('/mypage')}>
+                      <i class="fas fa-user-circle fa-lg"></i>
+                    </LinkClicked>
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/note">
+                    <LinkClicked isActive={pathname.includes('/note')}>
+                      <i class="far fa-bell fa-lg">{/* <span>●</span> */}</i>
+                    </LinkClicked>
+                  </Link>
+                </li>
+              </>
+            )}
           </ul>
         )}
       </Inner>
