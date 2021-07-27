@@ -6,22 +6,18 @@ import useInput from '@hooks/useInput';
 // import { useSelector } from 'react-redux';
 // import SockJsClient from 'react-stomp';
 
-const Detail = () => {
+const Detail = ({ sendToMessage, userId }) => {
   const [chat, onChangeChat, setChat] = useInput('');
-
-  // const [messages, setMessages] = useState([]);
-  // const user = useSelector((state) => state.auth.user.user_id);
-  // let topics = ['/topic/' + user];
-
-  // const $websocket = useRef(null);
 
   const onSubmitForm = useCallback(
     (e) => {
       e.preventDefault();
       console.log(chat);
       // 통신
+      sendToMessage(userId, 12, chat);
+      setChat('');
     },
-    [chat],
+    [userId, chat],
   );
 
   const receiveMessage = (msg) => {};
@@ -32,16 +28,6 @@ const Detail = () => {
         <Top>
           <h4>닉네임</h4>
         </Top>
-        {/* <SockJsClient
-          url="/chat"
-          ref={$websocket}
-          topics={topics}
-          onConnect={console.log('connected!')}
-          onDisconnect={console.log('disconnected!')}
-          onMessage={(msg) => {
-            receiveMessage(msg);
-          }}
-        /> */}
         <ChatList />
         <ChatBox chat={chat} onChangeChat={onChangeChat} onSubmitForm={onSubmitForm} />
       </Container>
