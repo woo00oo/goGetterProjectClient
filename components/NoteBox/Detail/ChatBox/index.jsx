@@ -26,7 +26,14 @@ const ChatBox = ({ chat, onChangeChat, onSubmitForm }) => {
   return (
     <ChatArea>
       <Form onSubmit={onSubmitForm}>
-        <TextArea id="editor=chat" onKeyPress={onKeydownChat} ref={textareaRef} value={chat} onChange={onChangeChat} />
+        <TextArea
+          type="text"
+          id="editor=chat"
+          onKeyPress={onKeydownChat}
+          ref={textareaRef}
+          value={chat}
+          onChange={onChangeChat}
+        />
         <Toolbox>
           <SendButton
             className={
