@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "webpack serve --env development",
-    "build": "webpack"
+    "dev": "cross-env webpack serve --env development",
+    "build": "cross-env NODE_ENV=production webpack"
   },
   "author": "WooDoDok",
   "license": "MIT",
@@ -58,6 +58,7 @@
     "redux-devtools-extension": "^2.13.9",
     "style-loader": "^2.0.0",
     "webpack": "^5.24.2",
+    "webpack-bundle-analyzer": "^4.4.2",
     "webpack-cli": "^4.5.0",
     "webpack-dev-server": "^3.11.2"
   },
