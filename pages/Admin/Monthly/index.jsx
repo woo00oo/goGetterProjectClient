@@ -27,7 +27,7 @@ const Monthly = () => {
       });
   }, []);
   return (
-    <div>
+    <div style={{ height: '100%' }}>
       <Container>
         <Header />
         <AllDiv>
