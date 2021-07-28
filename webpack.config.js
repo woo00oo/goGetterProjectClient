@@ -62,18 +62,18 @@ const config = {
   output: {
     path: path.join(__dirname, 'dist'),
     filename: '[name].js',
-    publicPath: '/dist/',
+    publicPath: '/',
   },
   devServer: {
     historyApiFallback: true,
     port: 3000,
-    publicPath: '/dist/',
+    host: '0.0.0.0',
     proxy: {
-      '/api/': {
+      '/api': {
         target: 'http://localhost:8080',
         changeOrigin: true,
       },
-      '/chat/': {
+      '/chat': {
         target: 'http://localhost:8080',
         changeOrigin: true,
       },
