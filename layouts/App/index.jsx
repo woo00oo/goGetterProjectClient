@@ -25,6 +25,7 @@ const EventDetail = loadable(() => import('@pages/Event/Detail'));
 const EventEnd = loadable(() => import('@pages/Event/End'));
 const EventWrite = loadable(() => import('@pages/Event/Write'));
 const Admin = loadable(() => import('@pages/Admin'));
+const Monthly = loadable(() => import('@pages/Admin/Monthly'));
 
 const App = () => {
   return (
@@ -52,6 +53,7 @@ const App = () => {
           <Route path="/event/end" component={EventEnd} />
           <Route path="/note" component={Note} />
           <Route path="/mypage/profile" component={Auth(MyPageProfile, 'USER')} />
+          <Route path="/admin/monthly" component={Auth(Monthly, 'ADMIN')} />
           <Route path="/admin" component={Auth(Admin, 'ADMIN')} />
         </Switch>
       </ScrollToTop>
